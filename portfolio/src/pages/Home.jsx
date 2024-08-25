@@ -1,5 +1,6 @@
 import Header from "../sections/Header";
 import About from "../sections/About";
+import Projects from "../sections/Projects";
 import styled from "styled-components";
 import backgroundMobile from "../assets/background-mobile.png";
 import backgroundDesktop from "../assets/background-desktop.png";
@@ -18,6 +19,7 @@ const Home = () => {
     <HomeContainer>
       <Header />
       <About />
+      <Projects />
     </HomeContainer>
   );
 };

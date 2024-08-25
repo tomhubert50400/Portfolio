@@ -11,11 +11,11 @@ const Text = styled.h1`
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.5;
   text-align: center;
   @media (min-width: 1023.99px) {
-    font-size: 40px;
+    font-size: 32px;
   }
 `;
 

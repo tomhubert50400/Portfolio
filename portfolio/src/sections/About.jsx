@@ -3,6 +3,7 @@ import styled from "styled-components";
 import GradientText from "../components/GradientText";
 import Banner from "../components/Banner";
 import CardsAbout from "../components/CardsAbout";
+import AboutDescription from "../components/AboutDescription";
 
 const AboutContainer = styled.div`
   display: flex;
@@ -38,8 +39,9 @@ const About = () => {
         <AboutCardsContainer>
           <CardsAbout title="1 " content="year of experience" />
           <CardsAbout title="2 " content="years of study" />
-          <CardsAbout title="5 +" content="different technologies" />
+          <CardsAbout title="5 +" content="different mastered technologies" />
         </AboutCardsContainer>
+        <AboutDescription />
       </AboutContainer>
     </>
   );

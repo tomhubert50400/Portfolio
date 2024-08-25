@@ -62,6 +62,7 @@ const CardsAboutText = styled.p`
   @media (min-width: 1023.99px) {
     font-size: 28px;
     margin: 20px;
+    text-align: center;
   }
 `;
 
