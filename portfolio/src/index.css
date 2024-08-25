@@ -1,0 +1,16 @@
+html {
+    scroll-behavior: smooth;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root {
+    --background-black: #03031B;
+    --purple-color: #7300F7;
+    --white: #fff;
+    --scrollbar-width: 12px;
+}
