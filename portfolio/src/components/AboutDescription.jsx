@@ -15,7 +15,7 @@ const AboutDescriptionContainer = styled.div`
 `;
 
 const AboutDescriptionTitle = styled.h1`
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
   color: var(--white);
   margin: 20px 0;
