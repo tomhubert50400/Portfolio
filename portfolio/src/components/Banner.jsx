@@ -21,7 +21,7 @@ const Avatar = styled.img`
   }
 `;
 
-const TextContainer = styled.div`
+const TextContainerFirst = styled.div`
   position: absolute;
   top: 10px;
   right: 10px;
@@ -32,15 +32,46 @@ const TextContainer = styled.div`
   width: auto;
   box-sizing: border-box; // Inclut padding et border dans la largeur
   overflow: hidden; // Assure qu'il n'y a pas de débordement interne
+  @media (min-width: 1023.99px) {
+    top: 80px;
+    right: 20px;
+  }
 `;
 
-const Text = styled.p`
+const TextFirst = styled.p`
   font-size: 12px;
   font-weight: bold;
   color: var(--white);
   margin: 0;
   @media (min-width: 1023.99px) {
-    font-size: 24px;
+    font-size: 28px;
+    margin: 0;
+  }
+`;
+
+const TextContainerSecond = styled.div`
+  position: absolute;
+  top: 150px;
+  left: 0px;
+  background-color: var(--purple-color);
+  border: 1px solid var(--white);
+  border-radius: 20px 0px 20px 20px;
+  padding: 10px 20px;
+  width: auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  @media (min-width: 1023.99px) {
+    top: 350px;
+    left: 20px;
+  }
+`;
+const TextSecond = styled.p`
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--white);
+  margin: 0;
+  @media (min-width: 1023.99px) {
+    font-size: 28px;
     margin: 0;
   }
 `;
@@ -49,9 +80,15 @@ const Banner = () => {
   return (
     <BannerContainer>
       <Avatar src={avatarAbout} alt="Tom Hubert" />
-      <TextContainer>
-        <Text>Hey, I'm Tom !</Text>
-      </TextContainer>
+      <TextContainerFirst>
+        <TextFirst>Hey, I'm Tom !</TextFirst>
+      </TextContainerFirst>
+      <TextContainerSecond>
+        <TextSecond>
+          I'm a junior <br />
+          Web Developer
+        </TextSecond>
+      </TextContainerSecond>
     </BannerContainer>
   );
 };
