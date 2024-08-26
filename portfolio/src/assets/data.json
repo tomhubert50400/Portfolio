@@ -1,0 +1,30 @@
+{
+    "projects": [
+      {
+        "id": 1,
+        "title": "Booki",
+        "description": "The aim of this project was to master the fundamentals of HTML and CSS and make it responsive.",
+        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277602520847482890/replicate-prediction-1jrdbwaf9hrgc0chhtertsgm9c.png?ex=66cdc391&is=66cc7211&hm=a6ecc3c67503dce6c148ca590643ff180b79584ff0069ab724cd75499d3e6b31&",
+        "stack": "Frontend",
+        "technologies": [
+          "HTML",
+          "CSS",
+          "Figma"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Sophie Bluel : Architecte d'intérieur",
+        "description": "The aim of this project was to create the project presentation page, the login page and the modal. The next step was to make it possible to connect, add, modify and delete projects.",
+        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277609516040720474/replicate-prediction-q3kfx8519srgc0chhtv9rz3w4c.png?ex=66cdca15&is=66cc7895&hm=8a832b7eff5afd13a5f37b244ef101b6243b180dbe77232a0a5943b23dad7116&",
+        "stack": "Frontend",
+        "technologies": [
+          "Figma",
+          "HTML",
+          "CSS",
+          "JavaScript"
+        ]
+      }
+    ]
+  }
+  
