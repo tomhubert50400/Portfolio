@@ -4,8 +4,16 @@
         "id": 1,
         "title": "Booki",
         "description": "The aim of this project was to master the fundamentals of HTML and CSS and make it responsive.",
-        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277602520847482890/replicate-prediction-1jrdbwaf9hrgc0chhtertsgm9c.png?ex=66cdc391&is=66cc7211&hm=a6ecc3c67503dce6c148ca590643ff180b79584ff0069ab724cd75499d3e6b31&",
+        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277694017307672607/Capture_decran_2024-08-26_a_20.19.47.png?ex=66ce18c8&is=66ccc748&hm=a5a637840557e5b3a156d5294843e1d8f8884dcf11814326480efed8f0aa63cf&",
         "stack": "Frontend",
+        "imagesCaroussel": [
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277694297650757744/Capture_decran_2024-08-26_a_20.20.53.png?ex=66ce190a&is=66ccc78a&hm=17645473014b5e7b9bc6db3fe93920a0ec198bb0cd7ac16a3573bdb00265bcc5&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277694354701680650/Capture_decran_2024-08-26_a_20.21.08.png?ex=66ce1918&is=66ccc798&hm=e2f1ba22b7e8750a70655cb915c246816a9355eccf4fbe41914518be61c7bfbd&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277696120398807092/image.png?ex=66ce1abd&is=66ccc93d&hm=d871cc09a44b6dbcc583b890f3ae0fcce1192ee39a030aa220bedd80893d5687&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277696166263263314/image.png?ex=66ce1ac8&is=66ccc948&hm=9db24a0e95e319f7cd8008078516a2c508e366762daea4a299f83681e5d9a99a&"
+        ],
+        "year": "2024",
+        "projectLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         "technologies": [
           "HTML",
           "CSS",
@@ -15,15 +23,62 @@
       },
       {
         "id": 2,
-        "title": "Sophie Bluel : Architecte d'intérieur",
+        "title": "Sophie Bluel : Interior architect",
         "description": "The aim of this project was to create the project presentation page, the login page and the modal. The next step was to make it possible to connect, add, modify and delete projects.",
-        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277609516040720474/replicate-prediction-q3kfx8519srgc0chhtv9rz3w4c.png?ex=66cdca15&is=66cc7895&hm=8a832b7eff5afd13a5f37b244ef101b6243b180dbe77232a0a5943b23dad7116&",
-        "stack": "Frontend",
+        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277698458450661609/image.png?ex=66ce1cea&is=66cccb6a&hm=b6583829a4bd16ed4902898f9da52e825bd4c8e84cd90fca71be789ca6d08af8&",
+        "stack": "Frontend & API",
+        "imagesCaroussel": [
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277699268269838336/image.png?ex=66ce1dac&is=66cccc2c&hm=ea3829ab194188995f30dbf54fc235d76500ad6f75cd3e90470e47ffa7c7f40b&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277699333843849286/image.png?ex=66ce1dbb&is=66cccc3b&hm=36c7403c0113dbac603cf01efa88023002368f538e398da78c6d04c52de4eff6&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277704618754707496/image.png?ex=66ce22a7&is=66ccd127&hm=31a8cc2f369bd37575d59dfd55e710d600c6b689ba6383f3cf687b9401f308a5&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277704704633081957/image.png?ex=66ce22bc&is=66ccd13c&hm=c0c05d8f6369897edd8ed91e8b17a51491dcb610dcd26b9dfa7843d58f3fabe6&"
+        ],
+        "year": "2024",
+        "projectLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         "technologies": [
-          "Figma",
           "HTML",
           "CSS",
           "JavaScript",
+          "Database",
+          "Figma",
+          "Git"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Nina Carducci : Photographer",
+        "description": "The aim of this project was to optimize the SEO of photographer Nina Carducci's website, as well as to resolve various Jquery-related problems already present in the project (caroussel not working in the modal, filters not working).",
+        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277706292651364433/image.png?ex=66ce2436&is=66ccd2b6&hm=1b1b542d869491fc23000821991ca91811b2e3e5221c764a73fa85587b446340&",
+        "stack": "Frontend & SEO",
+        "imagesCaroussel": [
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277707110288986142/image.png?ex=66ce24f9&is=66ccd379&hm=c381f95b4b5b6a4f4c9d4bf3425efae49e9e0257de8c332ff28193bb5820ac6d&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277707258804961381/image.png?ex=66ce251d&is=66ccd39d&hm=965a67860fdf9ad08d6c75aec5a7a9cb08f0a733b2f56709d981c6deabe6d984&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277707390111973512/image.png?ex=66ce253c&is=66ccd3bc&hm=2e73e471d3e44239f55a27b2fcda273c48296cf0c93959ee5c7c324af828442e&"
+        ],
+        "year": "2024",
+        "projectLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "technologies": [
+          "JavaScript",
+          "Figma",
+          "Git"
+        ]
+      },
+      {
+        "id": 4,
+        "title": "Nina Carducci : Photographer",
+        "description": "The aim of this project was to optimize the SEO of photographer Nina Carducci's website, as well as to resolve various Jquery-related problems already present in the project (caroussel not working in the modal, filters not working).",
+        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277706292651364433/image.png?ex=66ce2436&is=66ccd2b6&hm=1b1b542d869491fc23000821991ca91811b2e3e5221c764a73fa85587b446340&",
+        "stack": "Frontend & SEO",
+        "imagesCaroussel": [
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277707110288986142/image.png?ex=66ce24f9&is=66ccd379&hm=c381f95b4b5b6a4f4c9d4bf3425efae49e9e0257de8c332ff28193bb5820ac6d&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277707258804961381/image.png?ex=66ce251d&is=66ccd39d&hm=965a67860fdf9ad08d6c75aec5a7a9cb08f0a733b2f56709d981c6deabe6d984&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277707390111973512/image.png?ex=66ce253c&is=66ccd3bc&hm=2e73e471d3e44239f55a27b2fcda273c48296cf0c93959ee5c7c324af828442e&"
+        ],
+        "year": "2024",
+        "projectLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "technologies": [
+          "JavaScript",
+          "Figma",
           "Git"
         ]
       }

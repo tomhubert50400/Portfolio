@@ -9,6 +9,7 @@ import nodeIcon from "../assets/icons/node-icon.svg";
 import figmaIcon from "../assets/icons/figma-icon.svg";
 import sassIcon from "../assets/icons/sass-icon.svg";
 import gitIcon from "../assets/icons/github-icon.svg";
+import databaseIcon from "../assets/icons/database-icon.svg";
 
 const techIcons = {
   HTML: htmlIcon,
@@ -19,6 +20,7 @@ const techIcons = {
   Figma: figmaIcon,
   Sass: sassIcon,
   Git: gitIcon,
+  Database: databaseIcon,
 };
 
 const TechIcon = styled.img`

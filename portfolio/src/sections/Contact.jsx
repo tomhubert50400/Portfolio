@@ -78,7 +78,11 @@ const Contact = () => {
         <ContactLink href="https://github.com/tomhubert50400" target="_blank">
           <ContactSubTitle>View my GitHub</ContactSubTitle>
         </ContactLink>
-        <ContactLink href="mailto:tomhrt50@gmail.com" target="_blank">
+        <ContactLink
+          href="mailto:tomhrt50@gmail.com"
+          target="_blank"
+          title="tomhrt50@gmail.com"
+        >
           <ContactSubTitle>Send me an E-mail</ContactSubTitle>
         </ContactLink>
         <ContactLink
