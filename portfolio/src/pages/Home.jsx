@@ -5,6 +5,7 @@ import Contact from "../sections/Contact";
 import styled from "styled-components";
 import backgroundMobile from "../assets/background-mobile.png";
 import backgroundDesktop from "../assets/background-desktop.png";
+import Footer from "../sections/Footer";
 
 const HomeContainer = styled.div`
   background-image: url(${backgroundMobile});
@@ -22,6 +23,7 @@ const Home = () => {
       <About />
       <Projects />
       <Contact />
+      <Footer />
     </HomeContainer>
   );
 };

@@ -53,7 +53,12 @@ const ProjectCard = styled.div`
   padding: 15px;
   text-align: center;
   border: 1px solid;
-  border-color: #464646;
+  border-color: #a5a3a3;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  &:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
   @media (min-width: 1023.99px) {
     width: 350px;
   }
