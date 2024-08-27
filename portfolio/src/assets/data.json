@@ -4,13 +4,13 @@
         "id": 1,
         "title": "Booki",
         "description": "The aim of this project was to master the fundamentals of HTML and CSS and make it responsive.",
-        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277694017307672607/Capture_decran_2024-08-26_a_20.19.47.png?ex=66ce18c8&is=66ccc748&hm=a5a637840557e5b3a156d5294843e1d8f8884dcf11814326480efed8f0aa63cf&",
+        "imageUrl": "https://i.imgur.com/BWB1Xb3.png",
         "stack": "Frontend",
         "imagesCarousel": [
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277694297650757744/Capture_decran_2024-08-26_a_20.20.53.png?ex=66ce190a&is=66ccc78a&hm=17645473014b5e7b9bc6db3fe93920a0ec198bb0cd7ac16a3573bdb00265bcc5&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277694354701680650/Capture_decran_2024-08-26_a_20.21.08.png?ex=66ce1918&is=66ccc798&hm=e2f1ba22b7e8750a70655cb915c246816a9355eccf4fbe41914518be61c7bfbd&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277696120398807092/image.png?ex=66ce1abd&is=66ccc93d&hm=d871cc09a44b6dbcc583b890f3ae0fcce1192ee39a030aa220bedd80893d5687&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277696166263263314/image.png?ex=66ce1ac8&is=66ccc948&hm=9db24a0e95e319f7cd8008078516a2c508e366762daea4a299f83681e5d9a99a&"
+          "https://i.imgur.com/BWB1Xb3.png",
+          "https://i.imgur.com/zDYMpA2.png",
+          "https://i.imgur.com/fVYsnET.png",
+          "https://i.imgur.com/2PBB44m.png"
         ],
         "year": "2024",
         "projectLink": "https://booki.zerqua.com/",
@@ -26,12 +26,13 @@
         "id": 2,
         "title": "Nina Carducci : Photographer",
         "description": "The aim of this project was to optimize the SEO of photographer Nina Carducci's website, as well as to resolve various Jquery-related problems already present in the project (caroussel not working in the modal, filters not working).",
-        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277706292651364433/image.png?ex=66ce2436&is=66ccd2b6&hm=1b1b542d869491fc23000821991ca91811b2e3e5221c764a73fa85587b446340&",
+        "imageUrl": "https://i.imgur.com/QwespBz.png",
         "stack": "Frontend & SEO",
         "imagesCarousel": [
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277707110288986142/image.png?ex=66ce24f9&is=66ccd379&hm=c381f95b4b5b6a4f4c9d4bf3425efae49e9e0257de8c332ff28193bb5820ac6d&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277707258804961381/image.png?ex=66ce251d&is=66ccd39d&hm=965a67860fdf9ad08d6c75aec5a7a9cb08f0a733b2f56709d981c6deabe6d984&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277707390111973512/image.png?ex=66ce253c&is=66ccd3bc&hm=2e73e471d3e44239f55a27b2fcda273c48296cf0c93959ee5c7c324af828442e&"
+          "https://i.imgur.com/QwespBz.png",
+          "https://i.imgur.com/xTEUOJS.png",
+          "https://i.imgur.com/4W0wixa.png",
+          "https://i.imgur.com/PemzrMy.png"
         ],
         "year": "2024",
         "projectLink": "https://nina-carducci.zerqua.com/",
@@ -46,12 +47,13 @@
         "id": 3,
         "title": "Kasa",
         "description": "The aim of this project was to create, from scratch, a React application for a short-term rental agency, using SASS. As the back-end was not provided, the data came from a JSON so that the content could be dynamic.",
-        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277709444222029926/image.png?ex=66ce2726&is=66ccd5a6&hm=1d2173933ac77c2ef0e92e69e26f40c3a0ea24ecf2cf4a1f31830c4768b199ff&",
+        "imageUrl": "https://i.imgur.com/nE3vz73.png",
         "stack": "Frontend",
         "imagesCarousel": [
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277709667958521979/image.png?ex=66ce275b&is=66ccd5db&hm=09028ab08605caccd74cb894277652a68c0d840952a33575c2dd550c5a9df16e&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277709740616585216/image.png?ex=66ce276c&is=66ccd5ec&hm=6e5b15e50fc60968ffa636d306ae7d397c299af9345923ab2b60889ee9a92558&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277709554997526590/image.png?ex=66ce2740&is=66ccd5c0&hm=0d21ac77595549b0ad069e099328395fc7bb7cf01641d5691d8c4a676752d830&"
+          "https://i.imgur.com/nE3vz73.png",
+          "https://i.imgur.com/m90vzGQ.png",
+          "https://i.imgur.com/cTUkni5.png",
+          "https://i.imgur.com/o0GSWFx.png"
         ],
         "year": "2024",
         "projectLink": "https://kasa.zerqua.com/",
