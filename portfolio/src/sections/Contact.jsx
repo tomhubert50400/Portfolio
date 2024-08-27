@@ -82,9 +82,9 @@ const Contact = () => {
           <ContactSubTitle>View my GitHub</ContactSubTitle>
         </ContactLink>
         <ContactLink
-          href="mailto:tomhrt50@gmail.com"
+          href="mailto:contact@zerqua.com"
           target="_blank"
-          title="tomhrt50@gmail.com"
+          title="contact@zerqua.com"
         >
           <ContactSubTitle>Send me an E-mail</ContactSubTitle>
         </ContactLink>
