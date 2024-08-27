@@ -6,7 +6,7 @@
         "description": "The aim of this project was to master the fundamentals of HTML and CSS and make it responsive.",
         "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277694017307672607/Capture_decran_2024-08-26_a_20.19.47.png?ex=66ce18c8&is=66ccc748&hm=a5a637840557e5b3a156d5294843e1d8f8884dcf11814326480efed8f0aa63cf&",
         "stack": "Frontend",
-        "imagesCaroussel": [
+        "imagesCarousel": [
           "https://cdn.discordapp.com/attachments/1048240836414029844/1277694297650757744/Capture_decran_2024-08-26_a_20.20.53.png?ex=66ce190a&is=66ccc78a&hm=17645473014b5e7b9bc6db3fe93920a0ec198bb0cd7ac16a3573bdb00265bcc5&",
           "https://cdn.discordapp.com/attachments/1048240836414029844/1277694354701680650/Capture_decran_2024-08-26_a_20.21.08.png?ex=66ce1918&is=66ccc798&hm=e2f1ba22b7e8750a70655cb915c246816a9355eccf4fbe41914518be61c7bfbd&",
           "https://cdn.discordapp.com/attachments/1048240836414029844/1277696120398807092/image.png?ex=66ce1abd&is=66ccc93d&hm=d871cc09a44b6dbcc583b890f3ae0fcce1192ee39a030aa220bedd80893d5687&",
@@ -27,7 +27,7 @@
         "description": "The aim of this project was to create the project presentation page, the login page and the modal. The next step was to make it possible to connect, add, modify and delete projects.",
         "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277698458450661609/image.png?ex=66ce1cea&is=66cccb6a&hm=b6583829a4bd16ed4902898f9da52e825bd4c8e84cd90fca71be789ca6d08af8&",
         "stack": "Frontend & API",
-        "imagesCaroussel": [
+        "imagesCarousel": [
           "https://cdn.discordapp.com/attachments/1048240836414029844/1277699268269838336/image.png?ex=66ce1dac&is=66cccc2c&hm=ea3829ab194188995f30dbf54fc235d76500ad6f75cd3e90470e47ffa7c7f40b&",
           "https://cdn.discordapp.com/attachments/1048240836414029844/1277699333843849286/image.png?ex=66ce1dbb&is=66cccc3b&hm=36c7403c0113dbac603cf01efa88023002368f538e398da78c6d04c52de4eff6&",
           "https://cdn.discordapp.com/attachments/1048240836414029844/1277704618754707496/image.png?ex=66ce22a7&is=66ccd127&hm=31a8cc2f369bd37575d59dfd55e710d600c6b689ba6383f3cf687b9401f308a5&",
@@ -40,8 +40,7 @@
           "CSS",
           "JavaScript",
           "Database",
-          "Figma",
-          "Git"
+          "Figma"
         ]
       },
       {
@@ -50,7 +49,7 @@
         "description": "The aim of this project was to optimize the SEO of photographer Nina Carducci's website, as well as to resolve various Jquery-related problems already present in the project (caroussel not working in the modal, filters not working).",
         "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277706292651364433/image.png?ex=66ce2436&is=66ccd2b6&hm=1b1b542d869491fc23000821991ca91811b2e3e5221c764a73fa85587b446340&",
         "stack": "Frontend & SEO",
-        "imagesCaroussel": [
+        "imagesCarousel": [
           "https://cdn.discordapp.com/attachments/1048240836414029844/1277707110288986142/image.png?ex=66ce24f9&is=66ccd379&hm=c381f95b4b5b6a4f4c9d4bf3425efae49e9e0257de8c332ff28193bb5820ac6d&",
           "https://cdn.discordapp.com/attachments/1048240836414029844/1277707258804961381/image.png?ex=66ce251d&is=66ccd39d&hm=965a67860fdf9ad08d6c75aec5a7a9cb08f0a733b2f56709d981c6deabe6d984&",
           "https://cdn.discordapp.com/attachments/1048240836414029844/1277707390111973512/image.png?ex=66ce253c&is=66ccd3bc&hm=2e73e471d3e44239f55a27b2fcda273c48296cf0c93959ee5c7c324af828442e&"
@@ -65,21 +64,44 @@
       },
       {
         "id": 4,
-        "title": "Nina Carducci : Photographer",
-        "description": "The aim of this project was to optimize the SEO of photographer Nina Carducci's website, as well as to resolve various Jquery-related problems already present in the project (caroussel not working in the modal, filters not working).",
-        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277706292651364433/image.png?ex=66ce2436&is=66ccd2b6&hm=1b1b542d869491fc23000821991ca91811b2e3e5221c764a73fa85587b446340&",
-        "stack": "Frontend & SEO",
-        "imagesCaroussel": [
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277707110288986142/image.png?ex=66ce24f9&is=66ccd379&hm=c381f95b4b5b6a4f4c9d4bf3425efae49e9e0257de8c332ff28193bb5820ac6d&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277707258804961381/image.png?ex=66ce251d&is=66ccd39d&hm=965a67860fdf9ad08d6c75aec5a7a9cb08f0a733b2f56709d981c6deabe6d984&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277707390111973512/image.png?ex=66ce253c&is=66ccd3bc&hm=2e73e471d3e44239f55a27b2fcda273c48296cf0c93959ee5c7c324af828442e&"
+        "title": "Kasa",
+        "description": "The aim of this project was to create, from scratch, a React application for a short-term rental agency, using SASS. As the back-end was not provided, the data came from a JSON so that the content could be dynamic.",
+        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277709444222029926/image.png?ex=66ce2726&is=66ccd5a6&hm=1d2173933ac77c2ef0e92e69e26f40c3a0ea24ecf2cf4a1f31830c4768b199ff&",
+        "stack": "Frontend",
+        "imagesCarousel": [
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277709667958521979/image.png?ex=66ce275b&is=66ccd5db&hm=09028ab08605caccd74cb894277652a68c0d840952a33575c2dd550c5a9df16e&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277709740616585216/image.png?ex=66ce276c&is=66ccd5ec&hm=6e5b15e50fc60968ffa636d306ae7d397c299af9345923ab2b60889ee9a92558&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277709554997526590/image.png?ex=66ce2740&is=66ccd5c0&hm=0d21ac77595549b0ad069e099328395fc7bb7cf01641d5691d8c4a676752d830&"
         ],
         "year": "2024",
         "projectLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         "technologies": [
-          "JavaScript",
+          "React",
+          "Sass",
           "Figma",
           "Git"
+        ]
+      },
+      {
+        "id": 5,
+        "title": "Mon vieux grimoire",
+        "description": "The aim of this project was to create the back-end of the “Mon vieux grimoire” bookshop website. The front-end was already provided. We had to create a RESTful API, an ExpressJS server, set up a MongoDB database, an authentication system, a user management system, a book rating, creation, modification and deletion (CRUD) system and a calculation of the average rating for each book.",
+        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277719948508139540/image.png?ex=66ce30ee&is=66ccdf6e&hm=83d12a964d63bc51c557fdeb2523c715604d371d833f3b3772b2be0447c2e7f2&",
+        "stack": "Backend",
+        "imagesCarousel": [
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277720081861705848/image.png?ex=66ce310e&is=66ccdf8e&hm=672641542fabedf5f4389daa6b4f878c34dcf969386cb27a2bdfeff54ad4682a&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277720171728998430/image.png?ex=66ce3123&is=66ccdfa3&hm=6addf0f73f97400a25949d95fe992be59233b9420b4395a58b5b3c0600ea9c72&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277720238539935824/image.png?ex=66ce3133&is=66ccdfb3&hm=d1258ab1b3f288abda85f30b3b886819ccd322559b170d7b3f496765825715e7&",
+          "https://cdn.discordapp.com/attachments/1048240836414029844/1277720377073729576/image.png?ex=66ce3154&is=66ccdfd4&hm=53bc447808cb9dfdbdf11212fab1fb02d2509e852cd81018b024494a89796aeb&"
+        ],
+        "year": "2024",
+        "projectLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "technologies": [
+          "React",
+          "Node",
+          "JavaScript",
+          "Database",
+          "CSS"
         ]
       }
     ]

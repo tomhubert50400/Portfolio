@@ -48,6 +48,8 @@ const ContactSubTitle = styled.p`
   color: var(--white);
   padding: 15px;
   margin: 20px;
+  width: 150px;
+  text-align: center;
   border-radius: 50px;
   border: 2px solid;
   border-color: #bababa;
@@ -57,8 +59,9 @@ const ContactSubTitle = styled.p`
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
   }
   @media (min-width: 1023.99px) {
-    font-size: 32px;
-    padding: 25px;
+    font-size: 24px;
+    width: 250px;
+    padding: 15px;
   }
 `;
 

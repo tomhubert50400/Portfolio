@@ -9,7 +9,7 @@ import Footer from "../sections/Footer";
 
 const HomeContainer = styled.div`
   background-image: url(${backgroundMobile});
-  background-size: repeat;
+  background-size: cover;
   min-height: 100vh;
   @media (min-width: 768px) {
     background-image: url(${backgroundDesktop});

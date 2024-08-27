@@ -31,13 +31,13 @@ const FooterHr = styled.hr`
 `;
 
 const FooterText = styled.p`
-  font-size: 16px;
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.5);
-  margin: 20px;
+  margin: 0 0 10px 0;
   text-align: center;
   line-height: 1.5;
   @media (min-width: 1023.99px) {
-    font-size: 24px;
+    font-size: 14px;
   }
 `;
 
