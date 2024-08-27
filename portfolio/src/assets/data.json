@@ -13,38 +13,17 @@
           "https://cdn.discordapp.com/attachments/1048240836414029844/1277696166263263314/image.png?ex=66ce1ac8&is=66ccc948&hm=9db24a0e95e319f7cd8008078516a2c508e366762daea4a299f83681e5d9a99a&"
         ],
         "year": "2024",
-        "projectLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "projectLink": "https://booki.zerqua.com/",
         "technologies": [
           "HTML",
           "CSS",
           "Figma",
           "Git"
-        ]
+        ],
+        "githubLink": "https://github.com/tomhubert50400/booki-starter-code"
       },
       {
         "id": 2,
-        "title": "Sophie Bluel : Interior architect",
-        "description": "The aim of this project was to create the project presentation page, the login page and the modal. The next step was to make it possible to connect, add, modify and delete projects.",
-        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277698458450661609/image.png?ex=66ce1cea&is=66cccb6a&hm=b6583829a4bd16ed4902898f9da52e825bd4c8e84cd90fca71be789ca6d08af8&",
-        "stack": "Frontend & API",
-        "imagesCarousel": [
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277699268269838336/image.png?ex=66ce1dac&is=66cccc2c&hm=ea3829ab194188995f30dbf54fc235d76500ad6f75cd3e90470e47ffa7c7f40b&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277699333843849286/image.png?ex=66ce1dbb&is=66cccc3b&hm=36c7403c0113dbac603cf01efa88023002368f538e398da78c6d04c52de4eff6&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277704618754707496/image.png?ex=66ce22a7&is=66ccd127&hm=31a8cc2f369bd37575d59dfd55e710d600c6b689ba6383f3cf687b9401f308a5&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277704704633081957/image.png?ex=66ce22bc&is=66ccd13c&hm=c0c05d8f6369897edd8ed91e8b17a51491dcb610dcd26b9dfa7843d58f3fabe6&"
-        ],
-        "year": "2024",
-        "projectLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        "technologies": [
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "Database",
-          "Figma"
-        ]
-      },
-      {
-        "id": 3,
         "title": "Nina Carducci : Photographer",
         "description": "The aim of this project was to optimize the SEO of photographer Nina Carducci's website, as well as to resolve various Jquery-related problems already present in the project (caroussel not working in the modal, filters not working).",
         "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277706292651364433/image.png?ex=66ce2436&is=66ccd2b6&hm=1b1b542d869491fc23000821991ca91811b2e3e5221c764a73fa85587b446340&",
@@ -55,15 +34,16 @@
           "https://cdn.discordapp.com/attachments/1048240836414029844/1277707390111973512/image.png?ex=66ce253c&is=66ccd3bc&hm=2e73e471d3e44239f55a27b2fcda273c48296cf0c93959ee5c7c324af828442e&"
         ],
         "year": "2024",
-        "projectLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "projectLink": "https://nina-carducci.zerqua.com/",
         "technologies": [
           "JavaScript",
           "Figma",
           "Git"
-        ]
+        ],
+        "githubLink": "https://github.com/tomhubert50400/Nina-Carducci-Dev"
       },
       {
-        "id": 4,
+        "id": 3,
         "title": "Kasa",
         "description": "The aim of this project was to create, from scratch, a React application for a short-term rental agency, using SASS. As the back-end was not provided, the data came from a JSON so that the content could be dynamic.",
         "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277709444222029926/image.png?ex=66ce2726&is=66ccd5a6&hm=1d2173933ac77c2ef0e92e69e26f40c3a0ea24ecf2cf4a1f31830c4768b199ff&",
@@ -74,35 +54,14 @@
           "https://cdn.discordapp.com/attachments/1048240836414029844/1277709554997526590/image.png?ex=66ce2740&is=66ccd5c0&hm=0d21ac77595549b0ad069e099328395fc7bb7cf01641d5691d8c4a676752d830&"
         ],
         "year": "2024",
-        "projectLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "projectLink": "https://kasa.zerqua.com/",
         "technologies": [
           "React",
           "Sass",
           "Figma",
           "Git"
-        ]
-      },
-      {
-        "id": 5,
-        "title": "Mon vieux grimoire",
-        "description": "The aim of this project was to create the back-end of the “Mon vieux grimoire” bookshop website. The front-end was already provided. We had to create a RESTful API, an ExpressJS server, set up a MongoDB database, an authentication system, a user management system, a book rating, creation, modification and deletion (CRUD) system and a calculation of the average rating for each book.",
-        "imageUrl": "https://cdn.discordapp.com/attachments/1048240836414029844/1277719948508139540/image.png?ex=66ce30ee&is=66ccdf6e&hm=83d12a964d63bc51c557fdeb2523c715604d371d833f3b3772b2be0447c2e7f2&",
-        "stack": "Backend",
-        "imagesCarousel": [
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277720081861705848/image.png?ex=66ce310e&is=66ccdf8e&hm=672641542fabedf5f4389daa6b4f878c34dcf969386cb27a2bdfeff54ad4682a&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277720171728998430/image.png?ex=66ce3123&is=66ccdfa3&hm=6addf0f73f97400a25949d95fe992be59233b9420b4395a58b5b3c0600ea9c72&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277720238539935824/image.png?ex=66ce3133&is=66ccdfb3&hm=d1258ab1b3f288abda85f30b3b886819ccd322559b170d7b3f496765825715e7&",
-          "https://cdn.discordapp.com/attachments/1048240836414029844/1277720377073729576/image.png?ex=66ce3154&is=66ccdfd4&hm=53bc447808cb9dfdbdf11212fab1fb02d2509e852cd81018b024494a89796aeb&"
         ],
-        "year": "2024",
-        "projectLink": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-        "technologies": [
-          "React",
-          "Node",
-          "JavaScript",
-          "Database",
-          "CSS"
-        ]
+        "githubLink": "https://github.com/tomhubert50400/P5-Kasa-OPCR"
       }
     ]
   }

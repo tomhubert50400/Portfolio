@@ -248,6 +248,23 @@ const ProjectLinkButton = styled.a`
   }
 `;
 
+const GithubLinkButton = styled.a`
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s ease;
+`;
+
+const GithubIcon = styled.img`
+  width: 24px;
+  margin-right: 5px;
+`;
+
 const ProjectCards = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
@@ -368,6 +385,15 @@ const ProjectCards = () => {
               >
                 Visit my project here <LinkArrow src={linkArrow} alt="Link" />
               </ProjectLinkButton>
+            )}
+            {selectedProject.githubLink && (
+              <GithubLinkButton
+                href={selectedProject.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GithubIcon src={gitIcon} alt="GitHub" />
+              </GithubLinkButton>
             )}
           </ProjectModalContent>
         </Modal>
