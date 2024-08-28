@@ -390,8 +390,7 @@ const ProjectCards = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("Visit my project here")}{" "}
-                <LinkArrow src={linkArrow} alt="Link" />
+                {t("project_visit")} <LinkArrow src={linkArrow} alt="Link" />
               </ProjectLinkButton>
             )}
             {selectedProject.githubLink && (

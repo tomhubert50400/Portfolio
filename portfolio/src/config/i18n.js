@@ -20,6 +20,7 @@ const resources = {
         "I'm a young developer who has worked in various sectors, including sales. I've always had a passion for technology and computing in general. I'm looking for my first job as a web developer. I have experience from personal projects which you can view below (and there's many more on my GitHub).",
       project_title: "Projects",
       contact_title: "Contact me",
+      project_visit: "Visit my project here",
       contact_description:
         "If you wish to contact me, please send me a message on LinkedIn or an e-mail.",
       contact_github: "GitHub",
@@ -44,6 +45,7 @@ const resources = {
       about_description:
         "Bonjour, je m'appelle Tom Hubert et je suis un développeur web junior, bienvenue sur mon portfolio. Je suis un jeune développeur qui a travaillé dans différents secteurs, dont la vente et une petite expérience en développement web. J'ai toujours été passionné par la technologie et l'informatique en général. Je suis à la recherche d'un premier réel emploi en tant que développeur web. J'ai de l'expérience dans des projets projets personnels que vous pouvez consulter ci-dessous (et il y en a beaucoup d'autres sur mon GitHub).",
       project_title: "Projets",
+      project_visit: "Visitez mon projet ici",
       contact_title: "Me contacter",
       contact_description:
         "Si vous souhaitez me contacter, veuillez m'envoyer un message sur LinkedIn ou un e-mail.",
