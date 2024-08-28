@@ -67,6 +67,27 @@
         "Git"
       ],
       "githubLink": "https://github.com/tomhubert50400/P5-Kasa-OPCR"
+    },
+    {
+      "id": 4,
+      "title": "20 Numbers Challenge",
+      "description_en": "This personal project aimed to create a game that is easy to understand, but difficult. The goal is to sort 20 numbers in ascending order, but each number is generated randomly. Good luck!",
+      "description_fr": "Ce projet personnel avait pour but de créer un jeu facile à comprendre, mais difficile. Le but est de classer 20 nombres, par ordre croissant, mais chaque nombre est généré aléatoirement. Bonne chance !",
+      "imageUrl": "https://i.imgur.com/Sae3oW8.png",
+      "stack": "Frontend",
+      "imagesCarousel": [
+        "https://i.imgur.com/Sae3oW8.png",
+        "https://i.imgur.com/qP7zGfi.png",
+        "https://i.imgur.com/u13ajV9.png"
+      ],
+      "year": "2024",
+      "projectLink": "https://game-numbers.zerqua.com/",
+      "technologies": [
+        "React",
+        "CSS",
+        "Git"
+      ],
+      "githubLink": "https://github.com/tomhubert50400/20-numbers"
     }
   ]
 }
