@@ -1,70 +1,72 @@
 {
-    "projects": [
-      {
-        "id": 1,
-        "title": "Booki",
-        "description": "The aim of this project was to master the fundamentals of HTML and CSS and make it responsive.",
-        "imageUrl": "https://i.imgur.com/BWB1Xb3.png",
-        "stack": "Frontend",
-        "imagesCarousel": [
-          "https://i.imgur.com/BWB1Xb3.png",
-          "https://i.imgur.com/zDYMpA2.png",
-          "https://i.imgur.com/fVYsnET.png",
-          "https://i.imgur.com/2PBB44m.png"
-        ],
-        "year": "2024",
-        "projectLink": "https://booki.zerqua.com/",
-        "technologies": [
-          "HTML",
-          "CSS",
-          "Figma",
-          "Git"
-        ],
-        "githubLink": "https://github.com/tomhubert50400/booki-starter-code"
-      },
-      {
-        "id": 2,
-        "title": "Nina Carducci : Photographer",
-        "description": "The aim of this project was to optimize the SEO of photographer Nina Carducci's website, as well as to resolve various Jquery-related problems already present in the project (caroussel not working in the modal, filters not working).",
-        "imageUrl": "https://i.imgur.com/QwespBz.png",
-        "stack": "Frontend & SEO",
-        "imagesCarousel": [
-          "https://i.imgur.com/QwespBz.png",
-          "https://i.imgur.com/xTEUOJS.png",
-          "https://i.imgur.com/4W0wixa.png",
-          "https://i.imgur.com/PemzrMy.png"
-        ],
-        "year": "2024",
-        "projectLink": "https://nina-carducci.zerqua.com/",
-        "technologies": [
-          "JavaScript",
-          "Figma",
-          "Git"
-        ],
-        "githubLink": "https://github.com/tomhubert50400/Nina-Carducci-Dev"
-      },
-      {
-        "id": 3,
-        "title": "Kasa",
-        "description": "The aim of this project was to create, from scratch, a React application for a short-term rental agency, using SASS. As the back-end was not provided, the data came from a JSON so that the content could be dynamic.",
-        "imageUrl": "https://i.imgur.com/nE3vz73.png",
-        "stack": "Frontend",
-        "imagesCarousel": [
-          "https://i.imgur.com/nE3vz73.png",
-          "https://i.imgur.com/m90vzGQ.png",
-          "https://i.imgur.com/cTUkni5.png",
-          "https://i.imgur.com/o0GSWFx.png"
-        ],
-        "year": "2024",
-        "projectLink": "https://kasa.zerqua.com/",
-        "technologies": [
-          "React",
-          "Sass",
-          "Figma",
-          "Git"
-        ],
-        "githubLink": "https://github.com/tomhubert50400/P5-Kasa-OPCR"
-      }
-    ]
-  }
-  
+  "projects": [
+    {
+      "id": 1,
+      "title": "Booki",
+      "description_en": "The aim of this project was to master the fundamentals of HTML and CSS and make it responsive.",
+      "description_fr": "Le but de ce projet était de maîtriser les fondamentaux du HTML et du CSS et de rendre le site responsive.",
+      "imageUrl": "https://i.imgur.com/BWB1Xb3.png",
+      "stack": "Frontend",
+      "imagesCarousel": [
+        "https://i.imgur.com/BWB1Xb3.png",
+        "https://i.imgur.com/zDYMpA2.png",
+        "https://i.imgur.com/fVYsnET.png",
+        "https://i.imgur.com/2PBB44m.png"
+      ],
+      "year": "2024",
+      "projectLink": "https://booki.zerqua.com/",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "Figma",
+        "Git"
+      ],
+      "githubLink": "https://github.com/tomhubert50400/booki-starter-code"
+    },
+    {
+      "id": 2,
+      "title": "Nina Carducci : Photographer",
+      "description_en": "The aim of this project was to optimize the SEO of photographer Nina Carducci's website, as well as to resolve various Jquery-related problems already present in the project (caroussel not working in the modal, filters not working).",
+      "description_fr": "Le but de ce projet était d'optimiser le SEO du site de la photographe Nina Carducci, ainsi que de résoudre divers problèmes liés au Jquery déjà présents dans le projet (carrousel ne fonctionnant pas dans la modale, filtres non fonctionnels).",
+      "imageUrl": "https://i.imgur.com/QwespBz.png",
+      "stack": "Frontend & SEO",
+      "imagesCarousel": [
+        "https://i.imgur.com/QwespBz.png",
+        "https://i.imgur.com/xTEUOJS.png",
+        "https://i.imgur.com/4W0wixa.png",
+        "https://i.imgur.com/PemzrMy.png"
+      ],
+      "year": "2024",
+      "projectLink": "https://nina-carducci.zerqua.com/",
+      "technologies": [
+        "JavaScript",
+        "Figma",
+        "Git"
+      ],
+      "githubLink": "https://github.com/tomhubert50400/Nina-Carducci-Dev"
+    },
+    {
+      "id": 3,
+      "title": "Kasa",
+      "description_en": "The aim of this project was to create, from scratch, a React application for a short-term rental agency, using SASS. As the back-end was not provided, the data came from a JSON so that the content could be dynamic.",
+      "description_fr": "Le but de ce projet était de créer, à partir de zéro, une application React pour une agence de location courte durée, en utilisant SASS. Comme le back-end n'était pas fourni, les données provenaient d'un JSON afin que le contenu puisse être dynamique.",
+      "imageUrl": "https://i.imgur.com/nE3vz73.png",
+      "stack": "Frontend",
+      "imagesCarousel": [
+        "https://i.imgur.com/nE3vz73.png",
+        "https://i.imgur.com/m90vzGQ.png",
+        "https://i.imgur.com/cTUkni5.png",
+        "https://i.imgur.com/o0GSWFx.png"
+      ],
+      "year": "2024",
+      "projectLink": "https://kasa.zerqua.com/",
+      "technologies": [
+        "React",
+        "Sass",
+        "Figma",
+        "Git"
+      ],
+      "githubLink": "https://github.com/tomhubert50400/P5-Kasa-OPCR"
+    }
+  ]
+}

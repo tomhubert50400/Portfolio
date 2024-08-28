@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import GradientText from "./GradientText";
+import { useTranslation } from "react-i18next";
 
 const AboutDescriptionContainer = styled.div`
   display: flex;
@@ -26,15 +27,13 @@ const AboutDescriptionTitle = styled.h1`
 `;
 
 const AboutDescription = () => {
+  const { t } = useTranslation();
   return (
     <AboutDescriptionContainer>
-      <AboutDescriptionTitle>About me</AboutDescriptionTitle>
-      <GradientText
-        content="I'm a young developer who has worked in various sectors, 
-      including sales. I've always had a passion for technology and computing in general.  
-      I'm looking for my first job as a web developer. I have experience from personal 
-      projects which you can view below (and there's many more on my GitHub)."
-      />
+      <AboutDescriptionTitle>
+        {t("about_description_title")}
+      </AboutDescriptionTitle>
+      <GradientText content={t("about_description")} />
     </AboutDescriptionContainer>
   );
 };

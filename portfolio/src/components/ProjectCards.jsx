@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
+import { useTranslation } from "react-i18next";
 import projectDatas from "../assets/data.json";
 import cssIcon from "../assets/icons/css-icon.svg";
 import htmlIcon from "../assets/icons/html-icon.svg";
@@ -27,6 +28,7 @@ const techIcons = {
   Database: databaseIcon,
 };
 
+//#region Styles
 const TechIcon = styled.img`
   justify-content: flex-start;
   width: 25px;
@@ -125,8 +127,8 @@ const ProjectModalContent = styled.div`
   background: rgb(33, 33, 33);
   background: linear-gradient(
     145deg,
-    rgba(33, 33, 33, 0.871608018207283) 0%,
-    rgba(0, 0, 0, 1) 100%
+    rgba(0, 0, 0, 1) 0%,
+    rgba(33, 33, 33, 0.871608018207283) 100%
   );
   border-radius: 10px;
   max-width: 800px;
@@ -141,7 +143,7 @@ const ModalTitle = styled.h2`
     145deg,
     rgba(255, 255, 255, 1) 0%,
     rgba(152, 128, 179, 1) 59%,
-    rgba(90, 44, 143, 0.8155637254901961) 100%
+    rgba(174, 103, 255, 0.82) 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -198,7 +200,7 @@ const Description = styled.p`
     145deg,
     rgba(255, 255, 255, 1) 0%,
     rgba(152, 128, 179, 1) 59%,
-    rgba(90, 44, 143, 0.8155637254901961) 100%
+    rgba(174, 103, 255, 0.82) 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -264,8 +266,9 @@ const GithubIcon = styled.img`
   width: 24px;
   margin-right: 5px;
 `;
-
+//#endregion
 const ProjectCards = () => {
+  const { t, i18n } = useTranslation();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -274,7 +277,7 @@ const ProjectCards = () => {
   const openModal = (project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0);
-    setIsDescriptionExpanded(false); // Reset description state
+    setIsDescriptionExpanded(false);
     setModalIsOpen(true);
   };
 
@@ -358,7 +361,9 @@ const ProjectCards = () => {
               />
               <NextButton onClick={nextImage}>{">"}</NextButton>
             </CarouselContainer>
-            <p>From {selectedProject.year}</p>
+            <p>
+              {t("From")} {selectedProject.year}
+            </p>
             <ProjectTechnologies>
               {selectedProject.technologies.map((tech, index) => (
                 <TechBadge key={index}>
@@ -368,11 +373,13 @@ const ProjectCards = () => {
             </ProjectTechnologies>
 
             <Description isExpanded={isDescriptionExpanded}>
-              {selectedProject.description}
+              {i18n.language === "fr"
+                ? selectedProject.description_fr
+                : selectedProject.description_en}
             </Description>
-            {selectedProject.description.length > 100 && (
+            {selectedProject.description_en.length > 100 && (
               <ShowMoreButton onClick={toggleDescription}>
-                {isDescriptionExpanded ? "Show less" : "Show more"}
+                {isDescriptionExpanded ? t("Show less") : t("Show more")}
               </ShowMoreButton>
             )}
 
@@ -383,7 +390,8 @@ const ProjectCards = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Visit my project here <LinkArrow src={linkArrow} alt="Link" />
+                {t("Visit my project here")}{" "}
+                <LinkArrow src={linkArrow} alt="Link" />
               </ProjectLinkButton>
             )}
             {selectedProject.githubLink && (

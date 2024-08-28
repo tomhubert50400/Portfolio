@@ -12,8 +12,11 @@
   "dependencies": {
     "@fontsource/dm-sans": "^5.0.22",
     "flowbite-react": "^0.10.1",
+    "i18next": "^23.14.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-flagpack": "^2.0.5",
+    "react-i18next": "^15.0.1",
     "react-modal": "^3.16.1",
     "react-multi-carousel": "^2.8.5",
     "react-slick": "^0.30.2",

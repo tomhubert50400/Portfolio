@@ -2,7 +2,9 @@ import React from "react";
 import ProjectCards from "../components/ProjectCards";
 import styled from "styled-components";
 import smilingAvatar from "../assets/smiling-avatar.png";
+import { useTranslation } from "react-i18next";
 
+//#region Styles
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -52,12 +54,15 @@ const ProjectsImg = styled.img`
     width: 200px;
   }
 `;
+//#endregion
 
 const Projects = () => {
+  const { t } = useTranslation();
+
   return (
     <Container id="projects">
       <ProjectsContainer>
-        <ProjectsTitle>Projects</ProjectsTitle>
+        <ProjectsTitle>{t("project_title")}</ProjectsTitle>
         <ProjectsImg src={smilingAvatar} alt="smiling-avatar" />
         <ProjectCards />
       </ProjectsContainer>
