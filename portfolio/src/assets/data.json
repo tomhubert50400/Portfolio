@@ -88,6 +88,28 @@
         "Git"
       ],
       "githubLink": "https://github.com/tomhubert50400/20-numbers"
+    },
+    {
+      "id": 5,
+      "title": "Korean Training App",
+      "description_en": "I created this project because I couldn't find any website that would allow me to practice reading, writing, and understanding Korean simply.",
+      "description_fr": "J'ai réalisé ce projet car je ne trouvais aucun site qui me permettait de m'entrainer à lire, écrire, et comprendre le coréen simplement.",
+      "imageUrl": "https://imgur.com/JdbVrOJ.png",
+      "stack": "Frontend",
+      "imagesCarousel": [
+        "https://i.imgur.com/qfpNYuQ.png",
+        "https://i.imgur.com/QiWPjpO.png",
+        "https://i.imgur.com/Reeaivs.png"
+      ],
+      "year": "2024",
+      "projectLink": "https://languages.zerqua.com/",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Git"
+      ],
+      "githubLink": "https://github.com/tomhubert50400/Korean-learning"
     }
   ]
 }
