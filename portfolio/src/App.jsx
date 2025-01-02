@@ -17,7 +17,7 @@ function App() {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    localStorage.setItem("preferredLanguage", lng); // Sauvegarde la langue choisie dans le localStorage
+    localStorage.setItem("preferredLanguage", lng);
   };
   return (
     <>
