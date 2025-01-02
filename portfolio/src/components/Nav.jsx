@@ -61,11 +61,11 @@ const Nav = () => {
     if (savedLanguage) {
       i18n.changeLanguage(savedLanguage);
     }
-  }, [i18n]); // Cette effet se déclenche au montage du composant
+  }, [i18n]);
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    localStorage.setItem("preferredLanguage", lng); // Sauvegarde la langue choisie dans le localStorage
+    localStorage.setItem("preferredLanguage", lng);
   };
 
   return (
