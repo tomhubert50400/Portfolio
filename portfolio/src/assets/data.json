@@ -5,6 +5,7 @@
       "title": "Booki",
       "description_en": "The aim of this project was to master the fundamentals of HTML and CSS and make it responsive.",
       "description_fr": "Le but de ce projet était de maîtriser les fondamentaux du HTML et du CSS et de rendre le site responsive.",
+      "description_ko": "이 프로젝트의 목표는 HTML과 CSS의 기본을 익히고 반응형 웹사이트를 만드는 것이었습니다.",
       "imageUrl": "https://i.imgur.com/BWB1Xb3.png",
       "stack": "Frontend",
       "imagesCarousel": [
@@ -28,6 +29,7 @@
       "title": "Nina Carducci : Photographer",
       "description_en": "The aim of this project was to optimize the SEO of photographer Nina Carducci's website, as well as to resolve various Jquery-related problems already present in the project (caroussel not working in the modal, filters not working).",
       "description_fr": "Le but de ce projet était d'optimiser le SEO du site de la photographe Nina Carducci, ainsi que de résoudre divers problèmes liés au Jquery déjà présents dans le projet (carrousel ne fonctionnant pas dans la modale, filtres non fonctionnels).",
+      "description_ko": "이 프로젝트의 목표는 사진작가 Nina Carducci의 웹사이트 SEO를 최적화하고, 모달에서 작동하지 않는 캐러셀과 필터 같은 기존의 jQuery 관련 문제를 해결하는 것이었습니다.",
       "imageUrl": "https://i.imgur.com/QwespBz.png",
       "stack": "Frontend & SEO",
       "imagesCarousel": [
@@ -50,6 +52,7 @@
       "title": "Kasa",
       "description_en": "The aim of this project was to create, from scratch, a React application for a short-term rental agency, using SASS. As the back-end was not provided, the data came from a JSON so that the content could be dynamic.",
       "description_fr": "Le but de ce projet était de créer, à partir de zéro, une application React pour une agence de location courte durée, en utilisant SASS. Comme le back-end n'était pas fourni, les données provenaient d'un JSON afin que le contenu puisse être dynamique.",
+      "description_ko": "이 프로젝트의 목표는 단기 임대 회사를 위한 React 애플리케이션을 SASS를 사용하여 처음부터 만드는 것이었습니다. 백엔드가 제공되지 않아 JSON 데이터를 활용해 동적 콘텐츠를 구현했습니다.",
       "imageUrl": "https://i.imgur.com/nE3vz73.png",
       "stack": "Frontend",
       "imagesCarousel": [
@@ -73,6 +76,7 @@
       "title": "20 Numbers Challenge",
       "description_en": "This personal project aimed to create a game that is easy to understand, but difficult. The goal is to sort 20 numbers in ascending order, but each number is generated randomly. Good luck!",
       "description_fr": "Ce projet personnel avait pour but de créer un jeu facile à comprendre, mais difficile. Le but est de classer 20 nombres, par ordre croissant, mais chaque nombre est généré aléatoirement. Bonne chance !",
+      "description_ko": "이 개인 프로젝트는 이해하기는 쉽지만 도전적인 게임을 만드는 것이 목표였습니다. 20개의 숫자를 오름차순으로 정렬해야 하는데, 각 숫자는 무작위로 생성됩니다. 행운을 빕니다!",
       "imageUrl": "https://i.imgur.com/Sae3oW8.png",
       "stack": "Frontend",
       "imagesCarousel": [
@@ -94,6 +98,7 @@
       "title": "Korean Training App",
       "description_en": "I created this project because I couldn't find any website that would allow me to practice reading, writing, and understanding Korean simply.",
       "description_fr": "J'ai réalisé ce projet car je ne trouvais aucun site qui me permettait de m'entrainer à lire, écrire, et comprendre le coréen simplement.",
+      "description_ko": "한국어 읽기, 쓰기, 이해를 간단하게 연습할 수 있는 사이트를 찾지 못해 이 프로젝트를 직접 만들게 되었습니다.",
       "imageUrl": "https://imgur.com/JdbVrOJ.png",
       "stack": "Frontend",
       "imagesCarousel": [

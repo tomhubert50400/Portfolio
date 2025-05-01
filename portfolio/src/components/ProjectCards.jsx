@@ -15,7 +15,6 @@ import databaseIcon from "../assets/icons/database-icon.svg";
 import linkArrow from "../assets/icons/link-arrow.svg";
 
 Modal.setAppElement("#root");
-
 const techIcons = {
   HTML: htmlIcon,
   CSS: cssIcon,
@@ -375,11 +374,14 @@ const ProjectCards = () => {
             <Description isExpanded={isDescriptionExpanded}>
               {i18n.language === "fr"
                 ? selectedProject.description_fr
+                : i18n.language === "ko"
+                ? selectedProject.description_ko
                 : selectedProject.description_en}
             </Description>
+
             {selectedProject.description_en.length > 100 && (
               <ShowMoreButton onClick={toggleDescription}>
-                {isDescriptionExpanded ? t("Show less") : t("Show more")}
+                {isDescriptionExpanded ? t("show_less") : t("show_more")}
               </ShowMoreButton>
             )}
 

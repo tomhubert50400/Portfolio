@@ -5,6 +5,7 @@ import "../index.css";
 import { useTranslation } from "react-i18next";
 import uk from "../assets/icons/uk.svg";
 import fr from "../assets/icons/fr.svg";
+import kr from "../assets/icons/kr.svg";
 
 //#region Styles
 const NavContainer = styled.div`
@@ -80,16 +81,25 @@ const Nav = () => {
               <LanguageImg
                 src={fr}
                 alt="Français"
-                title="click to change language to french"
+                title="Cliquez pour passer la langue en français"
               />
             </LanguageButton>
           )}
           {i18n.language === "fr" && (
+            <LanguageButton onClick={() => changeLanguage("ko")}>
+              <LanguageImg
+                src={kr}
+                alt="한국어"
+                title="한국어에서 영어로 바꾸기"
+              />
+            </LanguageButton>
+          )}
+          {i18n.language === "ko" && (
             <LanguageButton onClick={() => changeLanguage("en")}>
               <LanguageImg
                 src={uk}
                 alt="English"
-                title="cliquez pour changer la langue en anglais"
+                title="Click to switch to French"
               />
             </LanguageButton>
           )}
