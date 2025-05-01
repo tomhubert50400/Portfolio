@@ -312,7 +312,14 @@ const ProjectCards = () => {
           <ProjectCard key={project.id} onClick={() => openModal(project)}>
             <ProjectImage src={project.imageUrl} alt={project.title} />
             <ProjectStack>{project.stack}</ProjectStack>
-            <ProjectTitle>{project.title}</ProjectTitle>
+            <ProjectTitle>
+              {" "}
+              {i18n.language === "fr"
+                ? project.title_fr || project.title
+                : i18n.language === "ko"
+                ? project.title_ko || project.title
+                : project.title}
+            </ProjectTitle>
             <SpacerHr />
             <ProjectTechnologies>
               {project.technologies.map((tech, index) => (
@@ -350,7 +357,13 @@ const ProjectCards = () => {
           }}
         >
           <ProjectModalContent>
-            <ModalTitle>{selectedProject.title}</ModalTitle>
+            <ModalTitle>
+              {i18n.language === "fr"
+                ? selectedProject.title_fr || selectedProject.title
+                : i18n.language === "ko"
+                ? selectedProject.title_ko || selectedProject.title
+                : selectedProject.title_en || selectedProject.title}
+            </ModalTitle>
 
             <CarouselContainer>
               <PrevButton onClick={prevImage}>{"<"}</PrevButton>
