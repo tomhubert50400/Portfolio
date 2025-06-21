@@ -125,6 +125,33 @@
         "Git"
       ],
       "githubLink": "https://github.com/tomhubert50400/Korean-learning"
+    },
+    {
+      "id": 6,
+      "title": "Hangul typing practice App",
+      "title_fr": "Application d'entrainement a taper le Hangul",
+      "title_ko": "한글 타자 연습 앱",
+      "description_en": "I created this project to be able to practice typing Hangul on my computer with AZERTY and QWERTY keyboards and to try Cursor's IDE for the first time.",
+      "description_fr": "J'ai réalisé ce projet afin de pouvoir m'entraîner à taper le Hangul sur ordinateur avec clavier AZERTY et QWERTY et de tester Cursor pour la première fois.",
+      "description_ko": "AZERTY와 QWERTY 키보드로 한글을 연습할 수 있는 사이트를 찾지 못해 이 프로젝트를 직접 만들게 되었습니다. 또한 Cursor의 IDE를 처음으로 사용해보았습니다.",
+      "imageUrl": "https://i.imgur.com/HcjCeRu.png",
+      "stack": "Frontend",
+      "imagesCarousel": [
+        "https://i.imgur.com/HcjCeRu.png",
+        "https://i.imgur.com/WTUo6cH.png",
+        "https://i.imgur.com/mKo3Qo1.png",
+        "https://i.imgur.com/KOdX6LE.png"
+      ],
+      "year": "2024",
+      "projectLink": "https://hangul.zerqua.com/",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "React",
+        "JavaScript",
+        "Git"
+      ],
+      "githubLink": "https://github.com/tomhubert50400/hangul-typing-practice"
     }
   ]
 }
