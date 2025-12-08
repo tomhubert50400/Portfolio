@@ -152,6 +152,36 @@
         "Git"
       ],
       "githubLink": "https://github.com/tomhubert50400/hangul-typing-practice"
+    },
+    {
+      "id": 7,
+      "title": "LoL Draft betting site",
+      "title_fr": "Site de paris sur les draft de LoL",
+      "title_ko": "롤 드래프트 판매 사이트",
+      "description_en": "I realized this project to be able to bet on the draft of League of Legends during watchparties with my friends. This project has a lot of new features, such as using Google Firebase for the database and authentication.",
+      "description_fr": "J'ai réalisé ce projet afin de pouvoir parier sur le draft de League of Legends pendant les watchparties avec mes amis. Ce projet a beaucoup de nouvelles fonctionnalités, comme l'utilisation de Google Firebase pour la base de données et l'authentification.",
+      "description_ko": "롤 드래프트 판매 사이트를 만들어 친구들과 함께 시청파티를 할 때 드래프트를 판매할 수 있게 하기 위해 이 프로젝트를 만들었습니다. 이 프로젝트에는 많은 새로운 기능이 있습니다, 예를 들어 Google Firebase를 사용하여 데이터베이스와 인증을 구현했습니다.",
+      "imageUrl": "https://i.imgur.com/XhjPMUY.png",
+      "stack": "Frontend & Backend",
+      "imagesCarousel": [
+        "https://i.imgur.com/IKo5YKh.png",
+        "https://i.imgur.com/ed6uq5F.png",
+        "https://i.imgur.com/XhjPMUY.png",
+        "https://i.imgur.com/1rsuEpC.png",
+        "https://i.imgur.com/YrPyoTq.png"
+      ],
+      "year": "2025",
+      "projectLink": "https://draft.zerqua.com/",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "React",
+        "JavaScript",
+        "Git",
+        "Database"
+      ],
+      "githubLink": "https://github.com/tomhubert50400/lol-draft-betting"
     }
+    
   ]
 }
