@@ -85,12 +85,12 @@
       "description_en": "This personal project aimed to create a game that is easy to understand, but difficult. The goal is to sort 20 numbers in ascending order, but each number is generated randomly. Good luck!",
       "description_fr": "Ce projet personnel avait pour but de créer un jeu facile à comprendre, mais difficile. Le but est de classer 20 nombres, par ordre croissant, mais chaque nombre est généré aléatoirement. Bonne chance !",
       "description_ko": "이 개인 프로젝트는 이해하기는 쉽지만 도전적인 게임을 만드는 것이 목표였습니다. 20개의 숫자를 오름차순으로 정렬해야 하는데, 각 숫자는 무작위로 생성됩니다. 행운을 빕니다!",
-      "imageUrl": "https://i.imgur.com/Sae3oW8.png",
+      "imageUrl": "https://i.imgur.com/xvgr01Z.png",
       "stack": "Frontend",
       "imagesCarousel": [
-        "https://i.imgur.com/Sae3oW8.png",
-        "https://i.imgur.com/qP7zGfi.png",
-        "https://i.imgur.com/u13ajV9.png"
+        "https://i.imgur.com/f4rbnbN.png",
+        "https://i.imgur.com/ZvZ1POG.png",
+        "https://i.imgur.com/my7Js2b.png"
       ],
       "year": "2024",
       "projectLink": "https://game-numbers.zerqua.com/",
