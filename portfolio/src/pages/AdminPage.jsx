@@ -283,6 +283,37 @@ const AdminPage = () => {
     fetchProjects();
   };
 
+  const moveProject = async (index, direction) => {
+    const newIndex = index + direction;
+    if (newIndex < 0 || newIndex >= projects.length) return;
+
+    const reordered = [...projects];
+    const [moved] = reordered.splice(index, 1);
+    reordered.splice(newIndex, 0, moved);
+    setProjects(reordered);
+
+    setReordering(true);
+    try {
+      const res = await fetch(`${SUPABASE_URL}/functions/v1/reorder-projects`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          adminPassword: password,
+          orderedIds: reordered.map((p) => p.id),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.error || "Failed to reorder");
+        await fetchProjects();
+      }
+    } catch (err) {
+      alert(err.message || "Network error");
+      await fetchProjects();
+    }
+    setReordering(false);
+  };
+
   return (
     <PageContainer>
       <Title>Admin Panel</Title>
