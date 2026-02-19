@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -88,6 +88,90 @@ const SectionTitle = styled.h3`
   margin-bottom: -5px;
 `;
 
+const FileInput = styled.div`
+  position: relative;
+  padding: 20px;
+  background: #000000ad;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  color: #aaa;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+  &:hover {
+    border-color: var(--purple-color);
+  }
+  input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+`;
+
+const PreviewContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 5px;
+`;
+
+const PreviewItem = styled.div`
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #444;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+const RemoveBtn = styled.button`
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+`;
+
+const ProgressBar = styled.div`
+  width: 100%;
+  height: 6px;
+  background: #333;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 5px;
+`;
+
+const ProgressFill = styled.div`
+  height: 100%;
+  background: var(--purple-color);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+  width: ${(props) => props.$percent}%;
+`;
+
+const ProgressText = styled.p`
+  color: #aaa;
+  font-size: 13px;
+  text-align: center;
+  margin: 0;
+`;
+
 const TECH_OPTIONS = [
   "HTML",
   "CSS",
@@ -107,9 +191,13 @@ const STACK_OPTIONS = [
   "Frontend & SEO",
 ];
 
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+
 const AdminProjectForm = ({ adminPassword }) => {
   const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [uploadProgress, setUploadProgress] = useState("");
+  const [uploadPercent, setUploadPercent] = useState(0);
 
   const [title, setTitle] = useState("");
   const [titleFr, setTitleFr] = useState("");
@@ -117,13 +205,18 @@ const AdminProjectForm = ({ adminPassword }) => {
   const [descEn, setDescEn] = useState("");
   const [descFr, setDescFr] = useState("");
   const [descKo, setDescKo] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [carouselUrls, setCarouselUrls] = useState("");
+  const [mainImageFile, setMainImageFile] = useState(null);
+  const [mainImagePreview, setMainImagePreview] = useState("");
+  const [carouselFiles, setCarouselFiles] = useState([]);
+  const [carouselPreviews, setCarouselPreviews] = useState([]);
   const [stack, setStack] = useState("Frontend");
   const [year, setYear] = useState(new Date().getFullYear().toString());
   const [projectLink, setProjectLink] = useState("");
   const [githubLink, setGithubLink] = useState("");
   const [technologies, setTechnologies] = useState([]);
+
+  const mainInputRef = useRef(null);
+  const carouselInputRef = useRef(null);
 
   const toggleTech = (tech) => {
     setTechnologies((prev) =>
@@ -131,36 +224,103 @@ const AdminProjectForm = ({ adminPassword }) => {
     );
   };
 
+  const handleMainImage = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setMainImageFile(file);
+    setMainImagePreview(URL.createObjectURL(file));
+  };
+
+  const removeMainImage = () => {
+    setMainImageFile(null);
+    setMainImagePreview("");
+    if (mainInputRef.current) mainInputRef.current.value = "";
+  };
+
+  const handleCarouselFiles = (e) => {
+    const newFiles = Array.from(e.target.files);
+    if (!newFiles.length) return;
+    setCarouselFiles((prev) => [...prev, ...newFiles]);
+    setCarouselPreviews((prev) => [
+      ...prev,
+      ...newFiles.map((f) => URL.createObjectURL(f)),
+    ]);
+    if (carouselInputRef.current) carouselInputRef.current.value = "";
+  };
+
+  const removeCarouselImage = (index) => {
+    setCarouselFiles((prev) => prev.filter((_, i) => i !== index));
+    setCarouselPreviews((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const uploadImage = async (file) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("adminPassword", adminPassword);
+
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/upload-image`, {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Upload failed");
+    return data.url;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
     setErrorMsg("");
-
-    const imagesCarousel = carouselUrls
-      .split("\n")
-      .map((u) => u.trim())
-      .filter(Boolean);
-
-    const body = {
-      adminPassword,
-      title,
-      title_fr: titleFr || null,
-      title_ko: titleKo || null,
-      description_en: descEn,
-      description_fr: descFr || null,
-      description_ko: descKo || null,
-      image_url: imageUrl || null,
-      stack,
-      images_carousel: imagesCarousel,
-      year,
-      project_link: projectLink || null,
-      github_link: githubLink || null,
-      technologies,
-    };
+    setUploadProgress("");
+    setUploadPercent(0);
 
     try {
+      const totalUploads =
+        (mainImageFile ? 1 : 0) + carouselFiles.length;
+      let uploaded = 0;
+
+      let imageUrl = null;
+      if (mainImageFile) {
+        setUploadProgress(`Uploading main image...`);
+        imageUrl = await uploadImage(mainImageFile);
+        uploaded++;
+        setUploadPercent(Math.round((uploaded / totalUploads) * 100));
+      }
+
+      const carouselUrls = [];
+      for (let i = 0; i < carouselFiles.length; i++) {
+        setUploadProgress(
+          `Uploading carousel image ${i + 1}/${carouselFiles.length}...`
+        );
+        const url = await uploadImage(carouselFiles[i]);
+        carouselUrls.push(url);
+        uploaded++;
+        setUploadPercent(Math.round((uploaded / totalUploads) * 100));
+      }
+
+      setUploadProgress("Saving project...");
+      setUploadPercent(100);
+
+      const body = {
+        adminPassword,
+        title,
+        title_fr: titleFr || null,
+        title_ko: titleKo || null,
+        description_en: descEn,
+        description_fr: descFr || null,
+        description_ko: descKo || null,
+        image_url: imageUrl,
+        stack,
+        images_carousel: carouselUrls,
+        year,
+        project_link: projectLink || null,
+        github_link: githubLink || null,
+        technologies,
+      };
+
       const res = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/add-project`,
+        `${SUPABASE_URL}/functions/v1/add-project`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -177,22 +337,30 @@ const AdminProjectForm = ({ adminPassword }) => {
       }
 
       setStatus("success");
+      setUploadProgress("");
+      setUploadPercent(0);
       setTitle("");
       setTitleFr("");
       setTitleKo("");
       setDescEn("");
       setDescFr("");
       setDescKo("");
-      setImageUrl("");
-      setCarouselUrls("");
+      setMainImageFile(null);
+      setMainImagePreview("");
+      setCarouselFiles([]);
+      setCarouselPreviews([]);
       setStack("Frontend");
       setYear(new Date().getFullYear().toString());
       setProjectLink("");
       setGithubLink("");
       setTechnologies([]);
-    } catch {
+      if (mainInputRef.current) mainInputRef.current.value = "";
+      if (carouselInputRef.current) carouselInputRef.current.value = "";
+    } catch (err) {
       setStatus("error");
-      setErrorMsg("Network error");
+      setErrorMsg(err.message || "Network error");
+      setUploadProgress("");
+      setUploadPercent(0);
     }
   };
 
@@ -244,19 +412,50 @@ const AdminProjectForm = ({ adminPassword }) => {
       />
 
       <SectionTitle>Images</SectionTitle>
-      <Label>Main image URL</Label>
-      <Input
-        value={imageUrl}
-        onChange={(e) => setImageUrl(e.target.value)}
-        placeholder="https://i.imgur.com/..."
-      />
-      <Label>Carousel image URLs (one per line)</Label>
-      <Textarea
-        rows="4"
-        value={carouselUrls}
-        onChange={(e) => setCarouselUrls(e.target.value)}
-        placeholder={"https://i.imgur.com/img1.png\nhttps://i.imgur.com/img2.png"}
-      />
+      <Label>Main image</Label>
+      <FileInput>
+        {mainImagePreview ? "Change main image..." : "Click to select main image..."}
+        <input
+          ref={mainInputRef}
+          type="file"
+          accept="image/*"
+          onChange={handleMainImage}
+        />
+      </FileInput>
+      {mainImagePreview && (
+        <PreviewContainer>
+          <PreviewItem>
+            <img src={mainImagePreview} alt="Main preview" />
+            <RemoveBtn type="button" onClick={removeMainImage}>
+              x
+            </RemoveBtn>
+          </PreviewItem>
+        </PreviewContainer>
+      )}
+
+      <Label>Carousel images</Label>
+      <FileInput>
+        Click to add carousel images...
+        <input
+          ref={carouselInputRef}
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleCarouselFiles}
+        />
+      </FileInput>
+      {carouselPreviews.length > 0 && (
+        <PreviewContainer>
+          {carouselPreviews.map((src, i) => (
+            <PreviewItem key={i}>
+              <img src={src} alt={`Carousel ${i + 1}`} />
+              <RemoveBtn type="button" onClick={() => removeCarouselImage(i)}>
+                x
+              </RemoveBtn>
+            </PreviewItem>
+          ))}
+        </PreviewContainer>
+      )}
 
       <SectionTitle>Details</SectionTitle>
       <Label>Stack</Label>
@@ -303,6 +502,14 @@ const AdminProjectForm = ({ adminPassword }) => {
       <Button type="submit" disabled={status === "sending"}>
         {status === "sending" ? "Adding..." : "Add Project"}
       </Button>
+      {status === "sending" && uploadProgress && (
+        <>
+          <ProgressText>{uploadProgress}</ProgressText>
+          <ProgressBar>
+            <ProgressFill $percent={uploadPercent} />
+          </ProgressBar>
+        </>
+      )}
       {status === "success" && <Message>Project added successfully!</Message>}
       {status === "error" && <Message $isError>{errorMsg}</Message>}
     </Form>
