@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "react-modal";
 import { useTranslation } from "react-i18next";
-import projectDatas from "../assets/data.json";
+import { supabase } from "../lib/supabaseClient";
 import cssIcon from "../assets/icons/css-icon.svg";
 import htmlIcon from "../assets/icons/html-icon.svg";
 import jsIcon from "../assets/icons/js-icon.svg";
