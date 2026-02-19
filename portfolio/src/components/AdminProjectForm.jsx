@@ -550,6 +550,7 @@ const AdminProjectForm = ({ adminPassword, project, onSuccess }) => {
       <Label>Main image</Label>
       <FileInput>
         {mainImagePreview ? "Change main image..." : "Click to select main image..."}
+        <PasteHint>or Ctrl+V to paste from clipboard</PasteHint>
         <input
           ref={mainInputRef}
           type="file"
