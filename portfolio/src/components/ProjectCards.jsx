@@ -80,6 +80,7 @@ const ProjectImage = styled.img`
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 15px;
+  flex-shrink: 0;
 `;
 
 const ProjectTitle = styled.p`
