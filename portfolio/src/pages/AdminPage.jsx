@@ -172,6 +172,38 @@ const CancelButton = styled.button`
   }
 `;
 
+const ArrowButton = styled.button`
+  background: transparent;
+  border: 1px solid #555;
+  color: #aaa;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  padding: 0;
+  transition: all 0.2s ease;
+  &:hover:not(:disabled) {
+    border-color: var(--purple-color);
+    color: white;
+  }
+  &:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
+`;
+
+const OrderButtons = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-right: 10px;
+  flex-shrink: 0;
+`;
+
 const AdminPage = () => {
   const [password, setPassword] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
