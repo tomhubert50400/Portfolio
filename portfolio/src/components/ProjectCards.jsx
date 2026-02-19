@@ -109,7 +109,8 @@ const ProjectTechnologies = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: auto;
+  flex: 1;
+  align-content: center;
 `;
 
 const TechBadge = styled.span`
