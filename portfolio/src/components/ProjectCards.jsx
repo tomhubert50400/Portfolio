@@ -268,10 +268,50 @@ const GithubIcon = styled.img`
 //#endregion
 const ProjectCards = () => {
   const { t, i18n } = useTranslation();
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .order("id");
+
+      if (error) {
+        setError(error.message);
+      } else {
+        setProjects(
+          data.map((p) => ({
+            id: p.id,
+            title: p.title,
+            title_fr: p.title_fr,
+            title_ko: p.title_ko,
+            description_en: p.description_en,
+            description_fr: p.description_fr,
+            description_ko: p.description_ko,
+            imageUrl: p.image_url,
+            stack: p.stack,
+            imagesCarousel: p.images_carousel || [],
+            year: p.year,
+            projectLink: p.project_link,
+            technologies: p.technologies || [],
+            githubLink: p.github_link,
+          }))
+        );
+      }
+      setLoading(false);
+    };
+    fetchProjects();
+  }, []);
+
+  if (loading) return <GlobalContainer><p style={{ color: "white" }}>Loading...</p></GlobalContainer>;
+  if (error) return <GlobalContainer><p style={{ color: "red" }}>{error}</p></GlobalContainer>;
 
   const openModal = (project) => {
     setSelectedProject(project);
