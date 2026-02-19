@@ -172,6 +172,35 @@ const ProgressText = styled.p`
   margin: 0;
 `;
 
+const fadeInOut = keyframes`
+  0% { opacity: 0; transform: translateY(10px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+`;
+
+const PasteToast = styled.div`
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--purple-color);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 1000;
+  animation: ${fadeInOut} 2s ease forwards;
+  pointer-events: none;
+`;
+
+const PasteHint = styled.span`
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+`;
+
 const TECH_OPTIONS = [
   "HTML",
   "CSS",
