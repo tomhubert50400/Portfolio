@@ -663,6 +663,7 @@ const AdminProjectForm = ({ adminPassword, project, onSuccess }) => {
         </Message>
       )}
       {status === "error" && <Message $isError>{errorMsg}</Message>}
+      {pasteToast && <PasteToast>{pasteToast}</PasteToast>}
     </Form>
   );
 };
