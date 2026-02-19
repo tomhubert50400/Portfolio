@@ -348,7 +348,7 @@ const ProjectCards = () => {
   return (
     <GlobalContainer>
       <ProjectCardsContainer>
-        {projectDatas.projects.map((project) => (
+        {projects.map((project) => (
           <ProjectCard key={project.id} onClick={() => openModal(project)}>
             <ProjectImage src={project.imageUrl} alt={project.title} />
             <ProjectStack>{project.stack}</ProjectStack>
