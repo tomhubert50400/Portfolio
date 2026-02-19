@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import AdminProjectForm from "../components/AdminProjectForm";
+import { supabase } from "../lib/supabaseClient";
+
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 
 const PageContainer = styled.div`
   min-height: 100vh;
@@ -45,6 +48,10 @@ const Button = styled.button`
   &:hover {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
   }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
 
 const BackLink = styled.a`
@@ -62,10 +69,136 @@ const ErrorMsg = styled.p`
   font-size: 14px;
 `;
 
+const ProjectList = styled.div`
+  width: 90%;
+  max-width: 700px;
+  margin-bottom: 30px;
+`;
+
+const ProjectListTitle = styled.h2`
+  color: var(--purple-color);
+  margin-bottom: 15px;
+  font-size: 20px;
+`;
+
+const ProjectRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  background: #000000ad;
+  border: 1px solid #333;
+  border-radius: 10px;
+  margin-bottom: 8px;
+`;
+
+const ProjectInfo = styled.div`
+  color: white;
+  font-size: 14px;
+  flex: 1;
+  min-width: 0;
+`;
+
+const ProjectName = styled.span`
+  font-weight: bold;
+  margin-right: 10px;
+`;
+
+const ProjectYear = styled.span`
+  color: #aaa;
+  font-size: 13px;
+`;
+
+const RowButtons = styled.div`
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: 10px;
+`;
+
+const SmallButton = styled.button`
+  padding: 6px 14px;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+`;
+
+const EditButton = styled(SmallButton)`
+  background: var(--purple-color);
+  color: white;
+`;
+
+const DeleteButton = styled(SmallButton)`
+  background: #ff4444;
+  color: white;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
+
+const Divider = styled.hr`
+  border: none;
+  border-top: 1px solid #333;
+  width: 90%;
+  max-width: 700px;
+  margin: 20px 0;
+`;
+
+const FormModeTitle = styled.h2`
+  color: white;
+  margin-bottom: 10px;
+  font-size: 20px;
+`;
+
+const CancelButton = styled.button`
+  padding: 10px 20px;
+  background: transparent;
+  color: #aaa;
+  border: 1px solid #555;
+  border-radius: 50px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  &:hover {
+    border-color: #aaa;
+    color: white;
+  }
+`;
+
 const AdminPage = () => {
   const [password, setPassword] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState("");
+
+  const [projects, setProjects] = useState([]);
+  const [loadingProjects, setLoadingProjects] = useState(false);
+  const [editingProject, setEditingProject] = useState(null);
+  const [deletingId, setDeletingId] = useState(null);
+
+  const fetchProjects = useCallback(async () => {
+    setLoadingProjects(true);
+    const { data, error } = await supabase
+      .from("projects")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (!error && data) {
+      setProjects(data);
+    }
+    setLoadingProjects(false);
+  }, []);
+
+  useEffect(() => {
+    if (authenticated) {
+      fetchProjects();
+    }
+  }, [authenticated, fetchProjects]);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -75,6 +208,46 @@ const AdminPage = () => {
     } else {
       setError("Please enter a password.");
     }
+  };
+
+  const handleEdit = (project) => {
+    setEditingProject(project);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingProject(null);
+  };
+
+  const handleDelete = async (project) => {
+    if (!window.confirm(`Delete "${project.title}"? This cannot be undone.`)) {
+      return;
+    }
+
+    setDeletingId(project.id);
+    try {
+      const res = await fetch(`${SUPABASE_URL}/functions/v1/delete-project`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ adminPassword: password, id: project.id }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        alert(data.error || "Failed to delete project");
+      } else {
+        if (editingProject && editingProject.id === project.id) {
+          setEditingProject(null);
+        }
+        await fetchProjects();
+      }
+    } catch (err) {
+      alert(err.message || "Network error");
+    }
+    setDeletingId(null);
+  };
+
+  const handleFormSuccess = () => {
+    setEditingProject(null);
+    fetchProjects();
   };
 
   return (
@@ -92,7 +265,59 @@ const AdminPage = () => {
           {error && <ErrorMsg>{error}</ErrorMsg>}
         </PasswordForm>
       ) : (
-        <AdminProjectForm adminPassword={password} />
+        <>
+          <ProjectList>
+            <ProjectListTitle>Existing Projects</ProjectListTitle>
+            {loadingProjects ? (
+              <ProjectInfo>Loading...</ProjectInfo>
+            ) : projects.length === 0 ? (
+              <ProjectInfo>No projects found.</ProjectInfo>
+            ) : (
+              projects.map((p) => (
+                <ProjectRow key={p.id}>
+                  <ProjectInfo>
+                    <ProjectName>{p.title}</ProjectName>
+                    <ProjectYear>{p.year}</ProjectYear>
+                  </ProjectInfo>
+                  <RowButtons>
+                    <EditButton onClick={() => handleEdit(p)}>Edit</EditButton>
+                    <DeleteButton
+                      onClick={() => handleDelete(p)}
+                      disabled={deletingId === p.id}
+                    >
+                      {deletingId === p.id ? "..." : "Delete"}
+                    </DeleteButton>
+                  </RowButtons>
+                </ProjectRow>
+              ))
+            )}
+          </ProjectList>
+
+          <Divider />
+
+          {editingProject ? (
+            <>
+              <FormModeTitle>Edit: {editingProject.title}</FormModeTitle>
+              <CancelButton onClick={handleCancelEdit}>
+                Cancel editing
+              </CancelButton>
+              <AdminProjectForm
+                key={editingProject.id}
+                adminPassword={password}
+                project={editingProject}
+                onSuccess={handleFormSuccess}
+              />
+            </>
+          ) : (
+            <>
+              <FormModeTitle>Add New Project</FormModeTitle>
+              <AdminProjectForm
+                adminPassword={password}
+                onSuccess={handleFormSuccess}
+              />
+            </>
+          )}
+        </>
       )}
       <BackLink href="#">&larr; Back to site</BackLink>
     </PageContainer>
