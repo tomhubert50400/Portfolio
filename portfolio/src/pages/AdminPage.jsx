@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import styled from "styled-components";
 import AdminProjectForm from "../components/AdminProjectForm";
 import { supabase } from "../lib/supabaseClient";
@@ -75,10 +75,17 @@ const ProjectList = styled.div`
   margin-bottom: 30px;
 `;
 
+const ListHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+`;
+
 const ProjectListTitle = styled.h2`
   color: var(--purple-color);
-  margin-bottom: 15px;
   font-size: 20px;
+  margin: 0;
 `;
 
 const ProjectRow = styled.div`
@@ -86,10 +93,26 @@ const ProjectRow = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 12px 15px;
-  background: #000000ad;
-  border: 1px solid #333;
+  background: ${(props) => (props.$isDragOver ? "#1a1a2e" : "#000000ad")};
+  border: 1px solid ${(props) => (props.$isDragOver ? "var(--purple-color)" : "#333")};
   border-radius: 10px;
   margin-bottom: 8px;
+  transition: border-color 0.15s, background 0.15s;
+  opacity: ${(props) => (props.$isDragging ? 0.4 : 1)};
+`;
+
+const DragHandle = styled.div`
+  cursor: grab;
+  color: #555;
+  font-size: 18px;
+  margin-right: 12px;
+  flex-shrink: 0;
+  user-select: none;
+  line-height: 1;
+  padding: 4px 2px;
+  &:active {
+    cursor: grabbing;
+  }
 `;
 
 const ProjectInfo = styled.div`
@@ -142,6 +165,12 @@ const DeleteButton = styled(SmallButton)`
   }
 `;
 
+const SaveOrderButton = styled(Button)`
+  padding: 10px 24px;
+  font-size: 14px;
+  border-radius: 20px;
+`;
+
 const Divider = styled.hr`
   border: none;
   border-top: 1px solid #333;
@@ -172,48 +201,25 @@ const CancelButton = styled.button`
   }
 `;
 
-const ArrowButton = styled.button`
-  background: transparent;
-  border: 1px solid #555;
-  color: #aaa;
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  padding: 0;
-  transition: all 0.2s ease;
-  &:hover:not(:disabled) {
-    border-color: var(--purple-color);
-    color: white;
-  }
-  &:disabled {
-    opacity: 0.2;
-    cursor: default;
-  }
-`;
-
-const OrderButtons = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-right: 10px;
-  flex-shrink: 0;
-`;
-
 const AdminPage = () => {
   const [password, setPassword] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState("");
 
   const [projects, setProjects] = useState([]);
+  const [savedOrder, setSavedOrder] = useState([]);
   const [loadingProjects, setLoadingProjects] = useState(false);
   const [editingProject, setEditingProject] = useState(null);
   const [deletingId, setDeletingId] = useState(null);
-  const [reordering, setReordering] = useState(false);
+  const [savingOrder, setSavingOrder] = useState(false);
+
+  const [dragIndex, setDragIndex] = useState(null);
+  const [dragOverIndex, setDragOverIndex] = useState(null);
+  const dragCounter = useRef({});
+
+  const orderChanged =
+    projects.length > 0 &&
+    projects.map((p) => p.id).join(",") !== savedOrder.join(",");
 
   const fetchProjects = useCallback(async () => {
     setLoadingProjects(true);
@@ -223,6 +229,7 @@ const AdminPage = () => {
       .order("display_order");
     if (!error && data) {
       setProjects(data);
+      setSavedOrder(data.map((p) => p.id));
     }
     setLoadingProjects(false);
   }, []);
@@ -283,35 +290,76 @@ const AdminPage = () => {
     fetchProjects();
   };
 
-  const moveProject = async (index, direction) => {
-    const newIndex = index + direction;
-    if (newIndex < 0 || newIndex >= projects.length) return;
+  // --- Drag & drop ---
+  const handleDragStart = (e, index) => {
+    setDragIndex(index);
+    e.dataTransfer.effectAllowed = "move";
+  };
 
+  const handleDragEnter = (e, index) => {
+    e.preventDefault();
+    dragCounter.current[index] = (dragCounter.current[index] || 0) + 1;
+    setDragOverIndex(index);
+  };
+
+  const handleDragLeave = (e, index) => {
+    dragCounter.current[index] = (dragCounter.current[index] || 0) - 1;
+    if (dragCounter.current[index] <= 0) {
+      dragCounter.current[index] = 0;
+      if (dragOverIndex === index) {
+        setDragOverIndex(null);
+      }
+    }
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+  };
+
+  const handleDrop = (e, dropIndex) => {
+    e.preventDefault();
+    dragCounter.current = {};
+    if (dragIndex === null || dragIndex === dropIndex) {
+      setDragIndex(null);
+      setDragOverIndex(null);
+      return;
+    }
     const reordered = [...projects];
-    const [moved] = reordered.splice(index, 1);
-    reordered.splice(newIndex, 0, moved);
+    const [moved] = reordered.splice(dragIndex, 1);
+    reordered.splice(dropIndex, 0, moved);
     setProjects(reordered);
+    setDragIndex(null);
+    setDragOverIndex(null);
+  };
 
-    setReordering(true);
+  const handleDragEnd = () => {
+    setDragIndex(null);
+    setDragOverIndex(null);
+    dragCounter.current = {};
+  };
+
+  const saveOrder = async () => {
+    setSavingOrder(true);
     try {
       const res = await fetch(`${SUPABASE_URL}/functions/v1/reorder-projects`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           adminPassword: password,
-          orderedIds: reordered.map((p) => p.id),
+          orderedIds: projects.map((p) => p.id),
         }),
       });
       const data = await res.json();
       if (!res.ok) {
-        alert(data.error || "Failed to reorder");
-        await fetchProjects();
+        alert(data.error || "Failed to save order");
+      } else {
+        setSavedOrder(projects.map((p) => p.id));
       }
     } catch (err) {
       alert(err.message || "Network error");
-      await fetchProjects();
     }
-    setReordering(false);
+    setSavingOrder(false);
   };
 
   return (
@@ -331,30 +379,36 @@ const AdminPage = () => {
       ) : (
         <>
           <ProjectList>
-            <ProjectListTitle>Existing Projects</ProjectListTitle>
+            <ListHeader>
+              <ProjectListTitle>Existing Projects</ProjectListTitle>
+              {orderChanged && (
+                <SaveOrderButton onClick={saveOrder} disabled={savingOrder}>
+                  {savingOrder ? "Saving..." : "Save order"}
+                </SaveOrderButton>
+              )}
+            </ListHeader>
             {loadingProjects ? (
               <ProjectInfo>Loading...</ProjectInfo>
             ) : projects.length === 0 ? (
               <ProjectInfo>No projects found.</ProjectInfo>
             ) : (
               projects.map((p, i) => (
-                <ProjectRow key={p.id}>
-                  <OrderButtons>
-                    <ArrowButton
-                      onClick={() => moveProject(i, -1)}
-                      disabled={i === 0 || reordering}
-                      title="Move up"
-                    >
-                      &#9650;
-                    </ArrowButton>
-                    <ArrowButton
-                      onClick={() => moveProject(i, 1)}
-                      disabled={i === projects.length - 1 || reordering}
-                      title="Move down"
-                    >
-                      &#9660;
-                    </ArrowButton>
-                  </OrderButtons>
+                <ProjectRow
+                  key={p.id}
+                  $isDragging={dragIndex === i}
+                  $isDragOver={dragOverIndex === i && dragIndex !== i}
+                  onDragEnter={(e) => handleDragEnter(e, i)}
+                  onDragLeave={(e) => handleDragLeave(e, i)}
+                  onDragOver={handleDragOver}
+                  onDrop={(e) => handleDrop(e, i)}
+                >
+                  <DragHandle
+                    draggable
+                    onDragStart={(e) => handleDragStart(e, i)}
+                    onDragEnd={handleDragEnd}
+                  >
+                    &#9776;
+                  </DragHandle>
                   <ProjectInfo>
                     <ProjectName>{p.title}</ProjectName>
                     <ProjectYear>{p.year}</ProjectYear>
