@@ -48,14 +48,13 @@ const GlobalContainer = styled.div`
 `;
 
 const ProjectCardsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 300px);
+  display: flex;
   justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
   gap: 50px;
   border-radius: 25px;
-  @media (min-width: 1023.99px) {
-    grid-template-columns: repeat(auto-fill, 350px);
-  }
+  height: auto;
 `;
 
 const ProjectCard = styled.div`
