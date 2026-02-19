@@ -500,7 +500,7 @@ const AdminProjectForm = ({ adminPassword, project, onSuccess }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form ref={formRef} onSubmit={handleSubmit} tabIndex={-1}>
       <SectionTitle>Titles</SectionTitle>
       <Label>Title (EN) *</Label>
       <Input
