@@ -572,6 +572,7 @@ const AdminProjectForm = ({ adminPassword, project, onSuccess }) => {
       <Label>Carousel images</Label>
       <FileInput>
         Click to add carousel images...
+        <PasteHint>or Ctrl+V to paste from clipboard</PasteHint>
         <input
           ref={carouselInputRef}
           type="file"
