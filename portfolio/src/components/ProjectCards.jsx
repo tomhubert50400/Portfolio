@@ -106,6 +106,7 @@ const ProjectTechnologies = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
+  margin-top: auto;
 `;
 
 const TechBadge = styled.span`
