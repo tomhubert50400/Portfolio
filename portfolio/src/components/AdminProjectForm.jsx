@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -193,7 +193,9 @@ const STACK_OPTIONS = [
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 
-const AdminProjectForm = ({ adminPassword }) => {
+const AdminProjectForm = ({ adminPassword, project, onSuccess }) => {
+  const isEdit = !!project;
+
   const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [uploadProgress, setUploadProgress] = useState("");
@@ -207,8 +209,10 @@ const AdminProjectForm = ({ adminPassword }) => {
   const [descKo, setDescKo] = useState("");
   const [mainImageFile, setMainImageFile] = useState(null);
   const [mainImagePreview, setMainImagePreview] = useState("");
+  const [existingMainImage, setExistingMainImage] = useState("");
   const [carouselFiles, setCarouselFiles] = useState([]);
   const [carouselPreviews, setCarouselPreviews] = useState([]);
+  const [existingCarouselUrls, setExistingCarouselUrls] = useState([]);
   const [stack, setStack] = useState("Frontend");
   const [year, setYear] = useState(new Date().getFullYear().toString());
   const [projectLink, setProjectLink] = useState("");
@@ -217,6 +221,58 @@ const AdminProjectForm = ({ adminPassword }) => {
 
   const mainInputRef = useRef(null);
   const carouselInputRef = useRef(null);
+
+  useEffect(() => {
+    if (project) {
+      setTitle(project.title || "");
+      setTitleFr(project.title_fr || "");
+      setTitleKo(project.title_ko || "");
+      setDescEn(project.description_en || "");
+      setDescFr(project.description_fr || "");
+      setDescKo(project.description_ko || "");
+      setStack(project.stack || "Frontend");
+      setYear(project.year || new Date().getFullYear().toString());
+      setProjectLink(project.project_link || "");
+      setGithubLink(project.github_link || "");
+      setTechnologies(project.technologies || []);
+      setExistingMainImage(project.image_url || "");
+      setMainImagePreview(project.image_url || "");
+      setMainImageFile(null);
+      setExistingCarouselUrls(project.images_carousel || []);
+      setCarouselFiles([]);
+      setCarouselPreviews([]);
+      setStatus("idle");
+      setErrorMsg("");
+    } else {
+      resetForm();
+    }
+  }, [project]);
+
+  const resetForm = () => {
+    setTitle("");
+    setTitleFr("");
+    setTitleKo("");
+    setDescEn("");
+    setDescFr("");
+    setDescKo("");
+    setMainImageFile(null);
+    setMainImagePreview("");
+    setExistingMainImage("");
+    setCarouselFiles([]);
+    setCarouselPreviews([]);
+    setExistingCarouselUrls([]);
+    setStack("Frontend");
+    setYear(new Date().getFullYear().toString());
+    setProjectLink("");
+    setGithubLink("");
+    setTechnologies([]);
+    setStatus("idle");
+    setErrorMsg("");
+    setUploadProgress("");
+    setUploadPercent(0);
+    if (mainInputRef.current) mainInputRef.current.value = "";
+    if (carouselInputRef.current) carouselInputRef.current.value = "";
+  };
 
   const toggleTech = (tech) => {
     setTechnologies((prev) =>
@@ -229,11 +285,13 @@ const AdminProjectForm = ({ adminPassword }) => {
     if (!file) return;
     setMainImageFile(file);
     setMainImagePreview(URL.createObjectURL(file));
+    setExistingMainImage("");
   };
 
   const removeMainImage = () => {
     setMainImageFile(null);
     setMainImagePreview("");
+    setExistingMainImage("");
     if (mainInputRef.current) mainInputRef.current.value = "";
   };
 
@@ -251,6 +309,10 @@ const AdminProjectForm = ({ adminPassword }) => {
   const removeCarouselImage = (index) => {
     setCarouselFiles((prev) => prev.filter((_, i) => i !== index));
     setCarouselPreviews((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const removeExistingCarouselImage = (index) => {
+    setExistingCarouselUrls((prev) => prev.filter((_, i) => i !== index));
   };
 
   const uploadImage = async (file) => {
@@ -280,24 +342,30 @@ const AdminProjectForm = ({ adminPassword }) => {
         (mainImageFile ? 1 : 0) + carouselFiles.length;
       let uploaded = 0;
 
-      let imageUrl = null;
+      let imageUrl = existingMainImage || null;
       if (mainImageFile) {
         setUploadProgress(`Uploading main image...`);
         imageUrl = await uploadImage(mainImageFile);
         uploaded++;
-        setUploadPercent(Math.round((uploaded / totalUploads) * 100));
+        if (totalUploads > 0) {
+          setUploadPercent(Math.round((uploaded / totalUploads) * 100));
+        }
       }
 
-      const carouselUrls = [];
+      const newCarouselUrls = [];
       for (let i = 0; i < carouselFiles.length; i++) {
         setUploadProgress(
           `Uploading carousel image ${i + 1}/${carouselFiles.length}...`
         );
         const url = await uploadImage(carouselFiles[i]);
-        carouselUrls.push(url);
+        newCarouselUrls.push(url);
         uploaded++;
-        setUploadPercent(Math.round((uploaded / totalUploads) * 100));
+        if (totalUploads > 0) {
+          setUploadPercent(Math.round((uploaded / totalUploads) * 100));
+        }
       }
+
+      const allCarouselUrls = [...existingCarouselUrls, ...newCarouselUrls];
 
       setUploadProgress("Saving project...");
       setUploadPercent(100);
@@ -312,15 +380,20 @@ const AdminProjectForm = ({ adminPassword }) => {
         description_ko: descKo || null,
         image_url: imageUrl,
         stack,
-        images_carousel: carouselUrls,
+        images_carousel: allCarouselUrls,
         year,
         project_link: projectLink || null,
         github_link: githubLink || null,
         technologies,
       };
 
+      const endpoint = isEdit ? "update-project" : "add-project";
+      if (isEdit) {
+        body.id = project.id;
+      }
+
       const res = await fetch(
-        `${SUPABASE_URL}/functions/v1/add-project`,
+        `${SUPABASE_URL}/functions/v1/${endpoint}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -339,23 +412,14 @@ const AdminProjectForm = ({ adminPassword }) => {
       setStatus("success");
       setUploadProgress("");
       setUploadPercent(0);
-      setTitle("");
-      setTitleFr("");
-      setTitleKo("");
-      setDescEn("");
-      setDescFr("");
-      setDescKo("");
-      setMainImageFile(null);
-      setMainImagePreview("");
-      setCarouselFiles([]);
-      setCarouselPreviews([]);
-      setStack("Frontend");
-      setYear(new Date().getFullYear().toString());
-      setProjectLink("");
-      setGithubLink("");
-      setTechnologies([]);
-      if (mainInputRef.current) mainInputRef.current.value = "";
-      if (carouselInputRef.current) carouselInputRef.current.value = "";
+
+      if (!isEdit) {
+        resetForm();
+      }
+
+      if (onSuccess) {
+        onSuccess();
+      }
     } catch (err) {
       setStatus("error");
       setErrorMsg(err.message || "Network error");
@@ -378,13 +442,13 @@ const AdminProjectForm = ({ adminPassword }) => {
       <Input
         value={titleFr}
         onChange={(e) => setTitleFr(e.target.value)}
-        placeholder="Titre du projet (Français)"
+        placeholder="Titre du projet (Fran\u00e7ais)"
       />
       <Label>Title (KO)</Label>
       <Input
         value={titleKo}
         onChange={(e) => setTitleKo(e.target.value)}
-        placeholder="프로젝트 제목 (한국어)"
+        placeholder="\ud504\ub85c\uc81d\ud2b8 \uc81c\ubaa9 (\ud55c\uad6d\uc5b4)"
       />
 
       <SectionTitle>Descriptions</SectionTitle>
@@ -401,14 +465,14 @@ const AdminProjectForm = ({ adminPassword }) => {
         rows="3"
         value={descFr}
         onChange={(e) => setDescFr(e.target.value)}
-        placeholder="Description (Français)"
+        placeholder="Description (Fran\u00e7ais)"
       />
       <Label>Description (KO)</Label>
       <Textarea
         rows="3"
         value={descKo}
         onChange={(e) => setDescKo(e.target.value)}
-        placeholder="설명 (한국어)"
+        placeholder="\uc124\uba85 (\ud55c\uad6d\uc5b4)"
       />
 
       <SectionTitle>Images</SectionTitle>
@@ -444,11 +508,19 @@ const AdminProjectForm = ({ adminPassword }) => {
           onChange={handleCarouselFiles}
         />
       </FileInput>
-      {carouselPreviews.length > 0 && (
+      {(existingCarouselUrls.length > 0 || carouselPreviews.length > 0) && (
         <PreviewContainer>
-          {carouselPreviews.map((src, i) => (
-            <PreviewItem key={i}>
+          {existingCarouselUrls.map((src, i) => (
+            <PreviewItem key={`existing-${i}`}>
               <img src={src} alt={`Carousel ${i + 1}`} />
+              <RemoveBtn type="button" onClick={() => removeExistingCarouselImage(i)}>
+                x
+              </RemoveBtn>
+            </PreviewItem>
+          ))}
+          {carouselPreviews.map((src, i) => (
+            <PreviewItem key={`new-${i}`}>
+              <img src={src} alt={`New carousel ${i + 1}`} />
               <RemoveBtn type="button" onClick={() => removeCarouselImage(i)}>
                 x
               </RemoveBtn>
@@ -500,7 +572,9 @@ const AdminProjectForm = ({ adminPassword }) => {
       </CheckboxGroup>
 
       <Button type="submit" disabled={status === "sending"}>
-        {status === "sending" ? "Adding..." : "Add Project"}
+        {status === "sending"
+          ? isEdit ? "Updating..." : "Adding..."
+          : isEdit ? "Update Project" : "Add Project"}
       </Button>
       {status === "sending" && uploadProgress && (
         <>
@@ -510,7 +584,11 @@ const AdminProjectForm = ({ adminPassword }) => {
           </ProgressBar>
         </>
       )}
-      {status === "success" && <Message>Project added successfully!</Message>}
+      {status === "success" && (
+        <Message>
+          {isEdit ? "Project updated successfully!" : "Project added successfully!"}
+        </Message>
+      )}
       {status === "error" && <Message $isError>{errorMsg}</Message>}
     </Form>
   );
