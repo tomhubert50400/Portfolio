@@ -248,8 +248,50 @@ const AdminProjectForm = ({ adminPassword, project, onSuccess }) => {
   const [githubLink, setGithubLink] = useState("");
   const [technologies, setTechnologies] = useState([]);
 
+  const [pasteToast, setPasteToast] = useState("");
+
   const mainInputRef = useRef(null);
   const carouselInputRef = useRef(null);
+  const formRef = useRef(null);
+
+  const showPasteToast = useCallback((msg) => {
+    setPasteToast(msg);
+    setTimeout(() => setPasteToast(""), 2000);
+  }, []);
+
+  useEffect(() => {
+    const form = formRef.current;
+    if (!form) return;
+
+    const handlePaste = (e) => {
+      const items = e.clipboardData?.items;
+      if (!items) return;
+
+      for (const item of items) {
+        if (item.type.startsWith("image/")) {
+          e.preventDefault();
+          const file = item.getAsFile();
+          if (!file) return;
+
+          const hasMain = !!(mainImageFile || mainImagePreview);
+          if (!hasMain) {
+            setMainImageFile(file);
+            setMainImagePreview(URL.createObjectURL(file));
+            setExistingMainImage("");
+            showPasteToast("Image pasted as main image");
+          } else {
+            setCarouselFiles((prev) => [...prev, file]);
+            setCarouselPreviews((prev) => [...prev, URL.createObjectURL(file)]);
+            showPasteToast("Image pasted to carousel");
+          }
+          return;
+        }
+      }
+    };
+
+    form.addEventListener("paste", handlePaste);
+    return () => form.removeEventListener("paste", handlePaste);
+  }, [mainImageFile, mainImagePreview, showPasteToast]);
 
   useEffect(() => {
     if (project) {
