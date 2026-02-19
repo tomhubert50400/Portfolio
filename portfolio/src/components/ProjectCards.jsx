@@ -87,6 +87,10 @@ const ProjectTitle = styled.p`
   text-align: start;
   margin-bottom: 10px;
   color: rgba(255, 255, 255, 1);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 const ProjectStack = styled.p`
