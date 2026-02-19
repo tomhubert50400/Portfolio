@@ -281,7 +281,7 @@ const ProjectCards = () => {
       const { data, error } = await supabase
         .from("projects")
         .select("*")
-        .order("id");
+        .order("display_order");
 
       if (error) {
         setError(error.message);
