@@ -60,6 +60,7 @@ const ProjectCardsContainer = styled.div`
 const ProjectCard = styled.div`
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.1);
+  width: 300px;
   padding: 15px;
   text-align: center;
   border: 1px solid;
@@ -70,6 +71,9 @@ const ProjectCard = styled.div`
   flex-direction: column;
   &:hover {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  }
+  @media (min-width: 1023.99px) {
+    width: 350px;
   }
 `;
 
