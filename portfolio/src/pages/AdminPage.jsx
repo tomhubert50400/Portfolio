@@ -337,8 +337,24 @@ const AdminPage = () => {
             ) : projects.length === 0 ? (
               <ProjectInfo>No projects found.</ProjectInfo>
             ) : (
-              projects.map((p) => (
+              projects.map((p, i) => (
                 <ProjectRow key={p.id}>
+                  <OrderButtons>
+                    <ArrowButton
+                      onClick={() => moveProject(i, -1)}
+                      disabled={i === 0 || reordering}
+                      title="Move up"
+                    >
+                      &#9650;
+                    </ArrowButton>
+                    <ArrowButton
+                      onClick={() => moveProject(i, 1)}
+                      disabled={i === projects.length - 1 || reordering}
+                      title="Move down"
+                    >
+                      &#9660;
+                    </ArrowButton>
+                  </OrderButtons>
                   <ProjectInfo>
                     <ProjectName>{p.title}</ProjectName>
                     <ProjectYear>{p.year}</ProjectYear>
