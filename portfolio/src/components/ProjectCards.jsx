@@ -61,12 +61,16 @@ const ProjectCard = styled.div`
   border-radius: 15px;
   background-color: rgba(255, 255, 255, 0.1);
   width: 300px;
+  height: 430px;
   padding: 15px;
   text-align: center;
   border: 1px solid;
   border-color: #a5a3a3;
   cursor: pointer;
   transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   &:hover {
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
   }
