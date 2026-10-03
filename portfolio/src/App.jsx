@@ -27,11 +27,6 @@ function App() {
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-    localStorage.setItem("preferredLanguage", lng);
-  };
-
   return <>{isAdmin ? <AdminPage /> : <Home />}</>;
 }
 

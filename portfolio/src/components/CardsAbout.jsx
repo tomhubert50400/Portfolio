@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const CardsAboutContainer = styled.div`
@@ -75,6 +75,11 @@ const CardsAbout = ({ title, content }) => {
       </CardsAboutContainer>
     </CardsAboutBorder>
   );
+};
+
+CardsAbout.propTypes = {
+  title: PropTypes.node.isRequired,
+  content: PropTypes.node.isRequired,
 };
 
 export default CardsAbout;

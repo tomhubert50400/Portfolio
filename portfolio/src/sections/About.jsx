@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import GradientText from "../components/GradientText";
 import Banner from "../components/Banner";

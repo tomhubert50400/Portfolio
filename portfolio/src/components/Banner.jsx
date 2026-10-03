@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import avatarAbout from "../assets/avatar-about.png";
 import { useTranslation } from "react-i18next";

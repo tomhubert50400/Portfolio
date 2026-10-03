@@ -1,8 +1,5 @@
-import React from "react";
 import styled from "styled-components";
-import GradientText from "../components/GradientText";
 import { useTranslation } from "react-i18next";
-import { useEffect } from "react";
 import ContactForm from "../components/contactForm";
 
 const ContactContainer = styled.div`
