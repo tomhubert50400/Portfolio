@@ -59,6 +59,7 @@ test("project modal wraps carousel in both directions and resets after reopening
   await expect(modal.getByRole("img", { name: "Image 2", exact: true })).toBeVisible();
   await modal.getByRole("button", { name: "X", exact: true }).click();
   await expect(modal).toHaveCount(0);
+  await expect(page.locator("#root")).not.toHaveAttribute("aria-hidden", "true");
   await page.getByRole("img", { name: projects[0].title, exact: true }).click();
   await expect(modal.getByRole("img", { name: "Image 1", exact: true })).toHaveAttribute("src", projects[0].images_carousel[0]);
   await page.keyboard.press("Escape");
@@ -75,6 +76,7 @@ test("modal opens repeatedly, closes by overlay, and displays the newly selected
     await expect(modal.getByRole("img", { name: "Image 1", exact: true })).toHaveAttribute("src", project.images_carousel[0]);
     await page.locator(".ReactModal__Overlay").click({ position: { x: 5, y: 5 } });
     await expect(modal).toHaveCount(0);
+    await expect(page.locator("#root")).not.toHaveAttribute("aria-hidden", "true");
   }
 });
 
@@ -132,6 +134,9 @@ test("admin edit, cancel, edit another project and repeat reset form state", asy
     await expect(page.getByRole("button", { name: "Update Project", exact: true })).toHaveCount(0);
   }
   await page.getByRole("link", { name: "Back to site" }).click();
+  // Wait for the visible route change before testing a second navigation.
+  await expect(page.getByRole("navigation")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Admin Panel" })).toHaveCount(0);
   await page.goBack();
   await expect(page.getByPlaceholder("Admin password")).toHaveValue("");
   await expect(page.getByRole("heading", { name: "Existing Projects" })).toHaveCount(0);

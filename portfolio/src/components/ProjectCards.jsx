@@ -380,8 +380,8 @@ const ProjectCards = () => {
           </ProjectCard>
         ))}
       </ProjectCardsContainer>
-      {selectedProject && (
-        <Modal
+      {/* Keep the modal mounted so StrictMode cannot double-register an open portal. */}
+      <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
           contentLabel="Project Details"
@@ -405,6 +405,7 @@ const ProjectCards = () => {
             },
           }}
         >
+        {selectedProject && (
           <ProjectModalContent>
             <ModalTitle>
               {i18n.language === "fr"
@@ -467,8 +468,8 @@ const ProjectCards = () => {
               </GithubLinkButton>
             )}
           </ProjectModalContent>
-        </Modal>
-      )}
+        )}
+      </Modal>
     </GlobalContainer>
   );
 };
