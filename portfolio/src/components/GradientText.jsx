@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Text = styled.h1`
@@ -27,6 +27,10 @@ const GradientText = ({ content }) => {
       <Text>{content}</Text>
     </>
   );
+};
+
+GradientText.propTypes = {
+  content: PropTypes.node.isRequired,
 };
 
 export default GradientText;

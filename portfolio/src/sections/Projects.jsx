@@ -1,4 +1,3 @@
-import React from "react";
 import ProjectCards from "../components/ProjectCards";
 import styled from "styled-components";
 import smilingAvatar from "../assets/smiling-avatar.png";

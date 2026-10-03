@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
+import { useState, useRef, useEffect, useCallback } from "react";
 import styled, { keyframes } from "styled-components";
 
 const Form = styled.form`
@@ -666,6 +667,27 @@ const AdminProjectForm = ({ adminPassword, project, onSuccess }) => {
       {pasteToast && <PasteToast>{pasteToast}</PasteToast>}
     </Form>
   );
+};
+
+AdminProjectForm.propTypes = {
+  adminPassword: PropTypes.string.isRequired,
+  project: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    title: PropTypes.string,
+    title_fr: PropTypes.string,
+    title_ko: PropTypes.string,
+    description_en: PropTypes.string,
+    description_fr: PropTypes.string,
+    description_ko: PropTypes.string,
+    stack: PropTypes.string,
+    year: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    project_link: PropTypes.string,
+    github_link: PropTypes.string,
+    technologies: PropTypes.arrayOf(PropTypes.string),
+    image_url: PropTypes.string,
+    images_carousel: PropTypes.arrayOf(PropTypes.string),
+  }),
+  onSuccess: PropTypes.func,
 };
 
 export default AdminProjectForm;
